@@ -1,0 +1,10 @@
+<clr-button-group [ngClass]="options?.clazz" [clrMenuPosition]="'bottom-right'">
+    <clr-button ype="button" (click)="backToList()" [disabled]="false" [clrInMenu]="false">
+        <clr-icon shape="list"></clr-icon>
+        {{text}}
+    </clr-button>
+    <clr-button *ngIf="canBack" type="button" (click)="backToUrl()" [disabled]="false" [clrInMenu]="false">
+        <clr-icon shape="ellipsis-horizontal"></clr-icon>
+        {{'common.back'|translate}}
+    </clr-button>
+</clr-button-group>

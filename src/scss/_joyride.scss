@@ -1,0 +1,184 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+@mixin get-joyride(
+  $joyride-vars: (
+    backdrop-background-color: var(--clr-modal-backdrop-color),
+    backdrop-opacity: var(--clr-modal-backdrop-opacity, 0.85),
+    arrow-color: var(--clr-card-bg-color),
+    container-font-color: var(--clr-global-font-color),
+    container-background-color: var(--clr-card-bg-color),
+    container-box-shadow: var(--clr-card-box-shadow),
+    container-border-radius: var(--clr-global-borderradius),
+    header-font-weight: var(--clr-h4-font-weight),
+    header-font-size: var(--clr-h4-font-size),
+    header-font-color: var(--clr-h4-color),
+    body-font-weight: var(--clr-p2-font-weight),
+    body-font-size: var(--clr-p2-font-size),
+    body-font-color: var(--clr-p2-color),
+    footer-font-weight: var(--clr-p7-font-weight),
+    footer-font-size: var(--clr-p7-font-size),
+    footer-font-color: var(--clr-p7-color),
+    close-icon-color: var(--clr-global-font-color),
+  )
+) {
+  .joyride-button {
+    text-transform: inherit !important;
+  }
+  .joyride-backdrop {
+    @include css-vars(
+      background-color,
+      joyride-backdrop-background-color,
+      map-get($joyride-vars, backdrop-background-color),
+      true,
+      true
+    );
+    @include css-vars(
+      opacity,
+      joyride-backdrop-opacity,
+      map-get($joyride-vars, backdrop-opacity),
+      true,
+      true
+    );
+  }
+
+  .joyride-step__holder {
+    .joyride-step__arrow {
+      .joyride-arrow__top {
+        @include css-vars(
+          border-bottom-color,
+          joyride-arrow-color,
+          map-get($joyride-vars, arrow-color),
+          true,
+          true
+        );
+      }
+    }
+
+    .joyride-step__container {
+      @include css-vars(
+        color,
+        joyride-container-font-color,
+        map-get($joyride-vars, container-font-color),
+        true,
+        true
+      );
+      @include css-vars(
+        background-color,
+        joyride-container-background-color,
+        map-get($joyride-vars, container-background-color),
+        true,
+        true
+      );
+      @include css-vars(
+        box-shadow,
+        joyride-container-box-shadow,
+        map-get($joyride-vars, container-box-shadow),
+        true,
+        true
+      );
+      @include css-vars(
+        border-radius,
+        joyride-container-border-radius,
+        map-get($joyride-vars, container-border-radius),
+        true,
+        true
+      );
+
+      .joyride-step__header {
+        .joyride-step__title {
+          @include css-vars(
+            font-weight,
+            joyride-header-font-weight,
+            map-get($joyride-vars, header-font-weight),
+            true,
+            true
+          );
+          @include css-vars(
+            color,
+            joyride-header-font-color,
+            map-get($joyride-vars, header-font-color),
+            true,
+            true
+          );
+          @include css-vars(
+            font-size,
+            joyride-header-font-size,
+            map-get($joyride-vars, header-font-size),
+            true,
+            true
+          );
+        }
+      }
+
+      .joyride-step__body {
+        @include css-vars(
+          font-weight,
+          joyride-body-font-weight,
+          map-get($joyride-vars, body-font-weight),
+          true,
+          true
+        );
+        @include css-vars(
+          color,
+          joyride-body-font-color,
+          map-get($joyride-vars, body-font-color),
+          true,
+          true
+        );
+        @include css-vars(
+          font-size,
+          joyride-body-font-size,
+          map-get($joyride-vars, body-font-size),
+          true,
+          true
+        );
+      }
+
+      .joyride-step__footer {
+        .joyride-step__counter-container {
+          @include css-vars(
+            font-weight,
+            joyride-footer-font-weight,
+            map-get($joyride-vars, footer-font-weight),
+            true,
+            true
+          );
+          @include css-vars(
+            color,
+            joyride-footer-font-color,
+            map-get($joyride-vars, footer-font-color),
+            true,
+            true
+          );
+          @include css-vars(
+            font-size,
+            joyride-footer-font-size,
+            map-get($joyride-vars, footer-font-size),
+            true,
+            true
+          );
+        }
+      }
+
+      .joyride-step__close {
+        svg {
+          width: 0.75rem !important;
+          height: 0.75rem !important;
+          line {
+            @include css-vars(
+              stroke,
+              joyride-close-icon-color,
+              map-get($joyride-vars, close-icon-color),
+              true,
+              true
+            );
+          }
+        }
+      }
+    }
+  }
+}
+@include exportsAs("joyride") {
+  @include get-joyride();
+}

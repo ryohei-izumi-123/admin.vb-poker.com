@@ -1,0 +1,13 @@
+@import "utils/mixins";
+
+:host {
+  div.offline-wrapper {
+    @include make-flex-fullscreen(var(--clr-modal-backdrop-color));
+    opacity: var(--clr-modal-backdrop-opacity, 0.85);
+
+    > div.offline-container {
+      min-width: 30rem;
+      min-height: 3rem;
+    }
+  }
+}

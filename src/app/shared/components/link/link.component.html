@@ -1,0 +1,4 @@
+<button type="button" [ngClass]="options?.clazz" [disabled]="disabled" [routerLink]="options?.link">
+    <clr-icon *ngIf="options?.icon?.shape" [attr.shape]="options?.icon?.shape"></clr-icon>
+    <ng-content></ng-content>
+</button>

@@ -1,0 +1,19 @@
+<admin-preloader *ngIf="isBusy"></admin-preloader>
+<admin-offline></admin-offline>
+<clr-main-container class="main-container">
+  <div [class]="layout?.wrapperClass">
+    <ng-container *ngIf="layout?.appLevelAlert">
+      <admin-alerts *ngIf="false"></admin-alerts>
+      <ng-container *ngIfAuth>
+        <admin-no-address-alert *ngHasAcl="{ resource: 'setting', action: 'read' }"></admin-no-address-alert>
+      </ng-container>
+    </ng-container>
+    <admin-header *ngIf="layout?.header"></admin-header>
+    <admin-subnav *ngIf="layout?.subnav"></admin-subnav>
+
+    <router-outlet></router-outlet>
+    <admin-content-container [class]="layout?.containerStyle" [contentAreaStyle]="layout?.contentAreaStyle"
+      [hasSidenav]="layout?.sidenav"></admin-content-container>
+    <admin-footer *ngIf="layout?.footer"></admin-footer>
+  </div>
+</clr-main-container>

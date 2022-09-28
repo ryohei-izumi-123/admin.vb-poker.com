@@ -1,0 +1,192 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+@include exportsAs("ckeditor") {
+  html:not(.dark-theme) {
+    /* -- Reset ------------------------------------------------------------------------ */
+    --ck-ui-component-min-height: 1.25rem;
+    --ck-border-radius: var(--clr-global-borderradius);
+    --ck-disabled-opacity: 0.5;
+
+    /* -- Font ------------------------------------------------------------------------ */
+    --ck-font-size-base: 0.75rem;
+    --ck-font-face: Roboto, Sans-Serif;
+    --ck-line-height-base: 1.25;
+    --ck-font-size-tiny: 0.5rem;
+    --ck-font-size-small: 0.75rem;
+    --ck-font-size-normal: 1rem;
+    --ck-font-size-big: 1.25rem;
+    --ck-font-size-large: 1.5rem;
+
+    /* -- Custom ------------------------------------------------------------------------ */
+    --ck-custom-background: var(--clr-card-bg-color);
+    --ck-custom-foreground: var(--clr-global-font-color);
+    --ck-custom-border: var(--clr-card-border-color);
+    --ck-custom-white: hsl(0, 0%, 100%);
+
+    /* -- Base ------------------------------------------------------------------------ */
+    // --ck-color-base-foreground: var(--ck-custom-white);
+    // --ck-color-base-background: var(--clr-card-bg-color);
+    // --ck-color-base-border: var(--clr-card-border-color);
+    // --ck-color-base-action: var(--clr-forms-valid-color);
+    // --ck-color-base-text: var(--clr-global-font-color);
+    // --ck-color-base-focus: var(--clr-link-color);
+    // --ck-color-base-active: var(--clr-link-active-color);
+    // --ck-color-base-active-focus: var(--clr-link-hover-color);
+    // --ck-color-base-error: var(--clr-forms-invalid-color);
+
+    /* -- Generic colors ------------------------------------------------------------------------ */
+    // --ck-color-focus-border-coordinates: 208, 79%, 51%;
+    --ck-color-focus-border: var(--clr-btn-danger-bg-color);
+    --ck-color-focus-error-shadow: var(--clr-forms-invalid-color);
+    --ck-color-text: var(--clr-global-font-color);
+    // --ck-color-focus-outer-shadow: hsl(207, 89%, 86%);
+    // --ck-color-focus-disabled-shadow: hsla(209, 90%, 72%, 0.3);
+    // --ck-color-shadow-drop: hsla(0, 0%, 0%, 0.15);
+    // --ck-color-shadow-drop-active: hsla(0, 0%, 0%, 0.2);
+    // --ck-color-shadow-inner: hsla(0, 0%, 0%, 0.1);
+
+    /* -- Focus ------------------------------------------------------------------------ */
+    // --ck-focus-outer-shadow-geometry: 0 0 0 3px;
+    // --ck-focus-outer-shadow: var(--ck-focus-outer-shadow-geometry)
+    //   var(--ck-color-focus-outer-shadow);
+    // --ck-focus-disabled-outer-shadow: var(--ck-focus-outer-shadow-geometry)
+    //   var(--ck-color-focus-disabled-shadow);
+    --ck-focus-error-outer-shadow: var(--ck-focus-outer-shadow-geometry)
+      var(--ck-color-focus-error-shadow);
+    --ck-focus-ring: 1px solid var(--clr-forms-focused-color);
+
+    /* -- Shadow ------------------------------------------------------------------------ */
+    // --ck-inner-shadow: 2px 2px 3px var(--ck-color-shadow-inner) inset;
+    // --ck-drop-shadow: 0 1px 2px 1px var(--ck-color-shadow-drop);
+    // --ck-drop-shadow-active: 0 3px 6px 1px var(--ck-color-shadow-drop-active);
+
+    /* -- Spacing ------------------------------------------------------------------------ */
+    // --ck-spacing-unit: 0.6rem;
+    // --ck-spacing-large: calc(var(--ck-spacing-unit) * 1.5);
+    // --ck-spacing-standard: var(--ck-spacing-unit);
+    // --ck-spacing-medium: calc(var(--ck-spacing-unit) * 0.8);
+    // --ck-spacing-small: calc(var(--ck-spacing-unit) * 0.5);
+    // --ck-spacing-tiny: calc(var(--ck-spacing-unit) * 0.3);
+    // --ck-spacing-extra-tiny: calc(var(--ck-spacing-unit) * 0.16);
+
+    /* -- Buttons ------------------------------------------------------------------------------- */
+    // --ck-color-button-default-background: var(--clr-btn-inverse-bg-color);
+    // --ck-color-button-default-hover-background: var(
+    //   --clr-btn-inverse-hover-bg-color
+    // );
+
+    // --ck-color-button-default-active-background: var(
+    //   --clr-btn-inverse-hover-bg-color
+    // );
+
+    // --ck-color-button-default-active-shadow: var(
+    //   --clr-btn-inverse-box-shadow-color
+    // );
+    // --ck-color-button-default-disabled-background: var(
+    //   --clr-btn-disabled-bg-color
+    // );
+
+    // --ck-color-button-on-background: var(--clr-btn-info-bg-color);
+    // --ck-color-button-on-hover-background: var(--clr-btn-info-hover-bg-color);
+    // --ck-color-button-on-active-background: var(--clr-btn-info-hover-bg-color);
+    // --ck-color-button-on-active-shadow: var(--clr-btn-inverse-box-shadow-color);
+    // --ck-color-button-on-disabled-background: var(--clr-btn-disabled-bg-color);
+
+    // --ck-color-button-action-background: var(--clr-btn-inverse-bg-color);
+    // --ck-color-button-action-hover-background: var(
+    //   --clr-btn-inverse-hover-bg-color
+    // );
+    // --ck-color-button-action-active-background: var(
+    //   --clr-btn-inverse-hover-bg-color
+    // );
+    // --ck-color-button-action-active-shadow: var(
+    //   --clr-btn-inverse-box-shadow-color
+    // );
+    // --ck-color-button-action-disabled-background: var(
+    //   --clr-btn-disabled-bg-color
+    // );
+    // --ck-color-button-action-text: var(--clr-btn-inverse-color);
+
+    // --ck-color-switch-button-off-background: var(
+    //   --clr-btn-success-disabled-color
+    // );
+    // --ck-color-switch-button-off-hover-background: var(
+    //   --clr-btn-success-disabled-color
+    // );
+    // --ck-color-switch-button-on-background: var(--clr-btn-success-bg-color);
+    // --ck-color-switch-button-on-hover-background: var(
+    //   --clr-btn-success-hover-bg-color
+    // );
+    // --ck-color-switch-button-inner-background: var(
+    //   --clr-btn-success-hover-bg-color
+    // );
+    // --ck-color-switch-button-inner-shadow: var(
+    //   --clr-btn-success-box-shadow-color
+    // );
+
+    // --ck-color-button-save: var(--clr-btn-success-bg-color);
+    // --ck-color-button-cancel: var(--clr-btn-danger-bg-color);
+
+    /* -- Dropdown ------------------------------------------------------------------------------ */
+    // --ck-color-dropdown-panel-border: var(--clr-dropdown-border-color);
+    // --ck-color-dropdown-panel-background: var(--clr-dropdown-bg-color);
+
+    /* -- Input --------------------------------------------------------------------------------- */
+    --ck-color-input-background: transparent;
+    --ck-color-input-border: var(--clr-forms-border-color);
+    --ck-color-input-error-border: var(--ck-color-base-error);
+    --ck-color-input-text: var(--clr-forms-text-color);
+    --ck-color-input-disabled-background: transparent;
+    --ck-color-input-disabled-border: var(--clr-forms-border-color);
+    --ck-color-input-disabled-text: var(--clr-forms-text-disabled-color);
+
+    /* -- List ---------------------------------------------------------------------------------- */
+    // --ck-color-list-background: var(--clr-card-bg-color);
+    // --ck-color-list-button-hover-background: var(--clr-global-hover-bg-color);
+    // --ck-color-list-button-on-background: var(--clr-dropdown-bg-color);
+    // --ck-color-list-button-on-background-focus: var(--clr-dropdown-bg-color);
+    // --ck-color-list-button-on-text: var(--clr-dropdown-text-color);
+
+    /* -- Panel --------------------------------------------------------------------------------- */
+    --ck-color-panel-background: var(--clr-card-bg-color);
+    --ck-color-panel-border: var(--clr-card-border-color);
+
+    /* -- Toolbar ------------------------------------------------------------------------------- */
+    --ck-color-toolbar-background: var(--clr-accordion-header-background-color);
+    --ck-color-toolbar-border: var(--clr-accordion-border-color);
+
+    /* -- Tooltip ------------------------------------------------------------------------------- */
+    --ck-color-tooltip-background: var(--clr-tooltip-background-color);
+    --ck-color-tooltip-text: var(--clr-tooltip-color);
+
+    /* -- Engine -------------------------------------------------------------------------------- */
+    // --ck-color-engine-placeholder-text: hsl(0, 0%, 44%);
+
+    /* -- Upload -------------------------------------------------------------------------------- */
+    // --ck-color-upload-bar-background: hsl(209, 92%, 70%);
+
+    /* -- Link -------------------------------------------------------------------------------- */
+    // --ck-color-link-default: var(--clr-link-color);
+    // --ck-color-link-selected-background: var(--clr-link-hover-color);
+    // --ck-color-link-fake-selection: var(--clr-global-selection-color);
+
+    /* -- Widget -------------------------------------------------------------------------------- */
+    // --ck-color-widget-blurred-border: hsl(0, 0%, 87%);
+    // --ck-color-widget-hover-border: hsl(43, 100%, 68%);
+    // --ck-color-widget-editable-focus-background: var(--ck-custom-white);
+
+    /* -- Image Caption -------------------------------------------------------------------------------- */
+    // --ck-color-image-caption-background: hsl(0, 0%, 97%);
+    // --ck-color-image-caption-text: hsl(0, 0%, 20%);
+
+    /* -- Split Button -------------------------------------------------------------------------------- */
+    // --ck-color-split-button-hover-border: var(--clr-btn-inverse-bg-color);
+    // --ck-color-split-button-hover-background: var(
+    //   --clr-btn-inverse-hover-color
+    // );
+
+    /* -- Label -------------------------------------------------------------------------------- */
+    // --ck-color-labeled-field-label-background: var(--clr-card-bg-color);
+  }
+}

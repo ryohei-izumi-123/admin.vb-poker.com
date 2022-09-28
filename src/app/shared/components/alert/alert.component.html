@@ -1,0 +1,11 @@
+<clr-alert [clrAlertType]="options?.level" [clrAlertClosable]="options?.isClosable"
+  [clrAlertAppLevel]="options?.isAppLevel" [clrAlertIcon]="options?.icon" (clrAlertClosedChange)="onClose()" #$alert>
+  <clr-alert-item>
+    <span class="alert-text">
+      <ng-content select="[role=text]"></ng-content>
+    </span>
+    <div class="alert-actions">
+      <ng-content select="[role=actions]"></ng-content>
+    </div>
+  </clr-alert-item>
+</clr-alert>

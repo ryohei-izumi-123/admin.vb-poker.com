@@ -1,0 +1,11 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-checkbox-container [clrInline]="false">
+        <label class="clr-sr-only">{{label}}</label>
+        <clr-checkbox-wrapper *ngFor="let option of options">
+            <input type="checkbox" [value]="option" formControlName="option" (change)="onChange(option)" clrCheckbox />
+            <label>{{getLabel(option)}}</label>
+        </clr-checkbox-wrapper>
+        <clr-control-helper></clr-control-helper>
+        <clr-control-error></clr-control-error>
+    </clr-checkbox-container>
+</form>

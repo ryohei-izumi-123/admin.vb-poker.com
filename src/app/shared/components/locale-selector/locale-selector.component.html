@@ -1,0 +1,13 @@
+<clr-dropdown [clrCloseMenuOnItemClick]="true" class="p-0">
+    <button clrDropdownTrigger class="nav-icon">
+        <admin-icon [options]="{ size: 16, shape: current }"></admin-icon>
+    </button>
+    <clr-dropdown-menu *clrIfOpen [clrPosition]="'bottom-right'">
+        <ng-container *ngFor="let locale of locales; let first = first">
+            <a (click)="setLocale(locale)" clrDropdownItem [ngClass]="{'mb-10': first}">
+                <admin-icon [options]="{ size: 16, shape: locale }"></admin-icon>
+                {{locale|locale}}
+            </a>
+        </ng-container>
+    </clr-dropdown-menu>
+</clr-dropdown>

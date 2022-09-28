@@ -1,0 +1,11 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-checkbox-container [clrInline]="false">
+        <label class="clr-sr-only">{{label}}</label>
+        <clr-checkbox-wrapper *ngFor="let role of options">
+            <input type="checkbox" [value]="role" formControlName="role" (change)="onChange(role)" clrCheckbox />
+            <label>{{role|role:'translate'}}</label>
+        </clr-checkbox-wrapper>
+        <clr-control-helper></clr-control-helper>
+        <clr-control-error></clr-control-error>
+    </clr-checkbox-container>
+</form>

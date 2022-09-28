@@ -1,0 +1,106 @@
+<admin-modal #$modal>
+  <ng-container role="modal-title">
+    <admin-icon [options]="{ size: 16, shape: 'warning-standard', clazz: 'is-warning' }"></admin-icon>
+    {{'common.totp'|translate}}
+  </ng-container>
+  <ng-container role="modal-body">
+    <admin-alert [options]="{ level: 'warning' }">
+      <ng-container role="text">
+        <ng-container>{{getPageText('content.1')}}</ng-container>
+      </ng-container>
+      <ng-container role="actions"></ng-container>
+    </admin-alert>
+    <div class="clr-row mt-20">
+      <div class="clr-col-12">
+        <admin-totp-form #$totpForm [param]="form?.value" (done$)="onTokenValidated($event)"></admin-totp-form>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container role="modal-footer">
+    <admin-button [options]="{ type: 'button', clazz: 'btn btn-outline' }" (click$)="$modal?.close()">
+      {{'common.cancel'|translate}}
+    </admin-button>
+    <admin-button [options]="{ type: 'button' , clazz: 'btn btn-primary' }" [disabled]="$totpForm?.hasFormError"
+      (click$)="$totpForm?.onSubmit()">
+      {{'common.validate'|translate}}
+    </admin-button>
+  </ng-container>
+</admin-modal>
+
+<div class="login-wrapper">
+  <form class="login" autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <label class="title">
+      <h3 class="welcome">{{getPageText('header')}}</h3>
+      {{getPageText('title')}}
+      <h5 class="hint">{{getPageText('description')}}</h5>
+    </label>
+
+    <admin-alert *ngIf="false" [options]="{ level: (isHuman$|async) ? 'success' : 'danger' }">
+      <ng-container role="text">
+        <ng-container *ngIf="isHuman$|async;else $isRobot">{{'common.isHuman'|translate}}</ng-container>
+        <ng-template #$isRobot>
+          <ng-container>{{'common.isRobot'|translate}}</ng-container>
+        </ng-template>
+      </ng-container>
+      <ng-container role="actions"></ng-container>
+    </admin-alert>
+
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only" for="username">{{'common.username'|translate}}</label>
+        <input type="text" [clrFocusOnViewInit]="true" id="username" name="username"
+          [placeholder]="'placeholder.username'|translate" formControlName="username" autocomplete="off" minlength="4"
+          maxlength="16" clrInput required />
+        <clr-control-helper>{{'validation.hint.alphaNum'|translate}}</clr-control-helper>
+        <clr-control-error *ngIf="hasError(getFormCtrl('username'))">
+          <ng-container *ngIf="hasErrorRequired(getFormCtrl('username'))">
+            {{'validation.messages.required'|translate}}
+          </ng-container>
+          <ng-container *ngIf="hasErrorMinlength(getFormCtrl('username'))">
+            {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('username')) } }}
+          </ng-container>
+          <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('username'))">
+            {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('username')) } }}
+          </ng-container>
+        </clr-control-error>
+      </clr-input-container>
+
+      <clr-password-container>
+        <label class="clr-sr-only" for="password">{{'common.password'|translate}}</label>
+        <input type="password" id="password" name="password" [placeholder]="'placeholder.password'|translate"
+          formControlName="password" autocomplete="off" minlength="6" maxlength="16" clrPassword required />
+        <clr-control-helper>{{'validation.hint.alphaNum'|translate}}</clr-control-helper>
+        <clr-control-error *ngIf="hasError(getFormCtrl('password'))">
+          <ng-container *ngIf="hasErrorRequired(getFormCtrl('password'))">
+            {{'validation.messages.required'|translate}}
+          </ng-container>
+          <ng-container *ngIf="hasErrorMinlength(getFormCtrl('password'))">
+            {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('password')) } }}
+          </ng-container>
+          <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('password'))">
+            {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('password')) } }}
+          </ng-container>
+        </clr-control-error>
+      </clr-password-container>
+
+      <clr-toggle-container>
+        <label class="clr-sr-only" for="remember">{{'common.remember'|translate}}</label>
+        <clr-toggle-wrapper>
+          <input type="checkbox" id="remember" name="remember" formControlName="remember" clrToggle />
+          <label>{{'common.remember'|translate}}</label>
+        </clr-toggle-wrapper>
+        <clr-control-helper>{{'validation.hint.none'|translate}}</clr-control-helper>
+        <clr-control-error *ngIf="hasError(getFormCtrl('remember'))"></clr-control-error>
+      </clr-toggle-container>
+
+      <div *ngIf="error" class="error active" [innerHTML]="error?.message|nl2br"></div>
+
+      <admin-button #$submit [options]="{ type: 'submit', clazz: 'btn btn-primary btn-block' }"
+        [disabled]="hasFormError" (click$)="onSubmit()">
+        {{'common.login'|translate}}
+      </admin-button>
+
+      <admin-recaptcha (verified$)="verified$?.emit($event)"></admin-recaptcha>
+    </div>
+  </form>
+</div>

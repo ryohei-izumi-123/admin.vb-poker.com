@@ -1,0 +1,19 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-datalist-container>
+        <label class="clr-sr-only" for="datalist">{{label}}</label>
+        <input minlength="4" maxlength="16" id="datalist" name="datalist" formControlName="datalist"
+            (change)="onChange()" clrDatalistInput />
+        <datalist>
+            <option *ngFor="let item of options" [value]="item?.id">{{displayAs(item)}}</option>
+        </datalist>
+        <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+        <clr-control-error>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('datalist'))">
+                {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('datalist')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('datalist'))">
+                {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('datalist')) } }}
+            </ng-container>
+        </clr-control-error>
+    </clr-datalist-container>
+</form>

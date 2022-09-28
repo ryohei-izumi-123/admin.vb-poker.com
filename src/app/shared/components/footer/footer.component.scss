@@ -1,0 +1,41 @@
+/* stylelint-disable */
+:host {
+  footer {
+    display: flex !important;
+    justify-content: flex-end;
+    bottom: 0;
+    height: 3rem;
+    width: 100vw;
+    z-index: 1;
+    overflow: hidden;
+    background: var(--clr-header-7-bg-color) !important;
+    box-shadow: 0 0.05rem 0 var(--clr-nav-box-shadow-color, #cccccc) inset;
+
+    @media only screen and (max-width: 767px) {
+      // position: sticky;
+    }
+
+    section {
+      display: flex;
+      flex: 1;
+
+      p {
+        font-size: x-small;
+        line-height: 0.8rem;
+        color: var(--clr-header-font-color) !important;
+
+        &.copyright {
+          padding-right: 1rem;
+          text-align: right;
+          @media only screen and (max-width: 767px) {
+            display: none !important;
+          }
+        }
+
+        &.p7:first-child {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}

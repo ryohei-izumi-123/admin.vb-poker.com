@@ -1,0 +1,1116 @@
+{
+  "clr": {
+    "hide": "hide",
+    "info": "info",
+    "more": "more",
+    "next": "next",
+    "open": "open",
+    "show": "show",
+    "close": "close",
+    "danger": "danger",
+    "expand": "expand",
+    "select": "select",
+    "current": "current",
+    "loading": "loading",
+    "success": "success",
+    "warning": "warning",
+    "collapse": "collapse",
+    "lastPage": "last page",
+    "maxValue": "max",
+    "minValue": "min",
+    "nextPage": "next",
+    "previous": "previous",
+    "firstPage": "最初へ",
+    "selectAll": "全て選択",
+    "rowActions": "操作",
+    "sortColumn": "ソート",
+    "totalPages": "合計件数",
+    "currentPage": "現在",
+    "pickColumns": "pick columns",
+    "showColumns": "show columns",
+    "previousPage": "previous",
+    "datepickerToggle": "切替",
+    "stackViewChanged": "",
+    "verticalNavToggle": "",
+    "allColumnsSelected": "全選択",
+    "datepickerNextMonth": "next",
+    "datepickerNextDecade": "next",
+    "datepickerCurrentMonth": "this month",
+    "datepickerCurrentDecade": "current",
+    "datepickerPreviousMonth": "previous",
+    "datepickerPreviousDecade": "previous",
+    "datepickerSelectYearText": "年選択",
+    "singleSelectionAriaLabel": "",
+    "alertCloseButtonAriaLabel": "close",
+    "datepickerSelectMonthText": "month",
+    "detailExpandableAriaLabel": "",
+    "singleActionableAriaLabel": "",
+    "showColumnsMenuDescription": "toggle shown columns",
+    "daypickerSRCurrentYearPhrase": "",
+    "daypickerSRCurrentMonthPhrase": "",
+    "daypickerSRCurrentDecadePhrase": ""
+  },
+  "init": "init",
+  "menu": {
+    "acl": "権限管理",
+    "home": "ダッシュボード",
+    "user": "担当者管理",
+    "order": "注文管理",
+    "logout": "ログアウト",
+    "account": "アカウント設定",
+    "product": "販売商品管理",
+    "setting": "システム設定",
+    "webpage": "WEBページ管理",
+    "category": "商品カテゴリー管理",
+    "customer": "顧客データ管理",
+    "language": "言語管理"
+  },
+  "tour": {
+    "step1": {
+      "text": "表示言語は英語・日本語よりお選び頂けます。",
+      "title": "言語の設定"
+    },
+    "step2": {
+      "text": "ダークモードを利用するとブルーライトによる目の疲労の低減が期待できます。",
+      "title": "ダークモードの切替"
+    },
+    "step3": {
+      "text": "アカウント設定やシステムからログアウトを行う場合はこちらをクリック。",
+      "title": "アカウントメニュー"
+    },
+    "step4": {
+      "text": "ログイン中はこちらをクリックするといつでもダッシュボードへ移動できます。",
+      "title": "ダッシュボードへのアクセス"
+    }
+  },
+  "pages": {
+    "acl": {
+      "index": {
+        "title": "管理システムの権限を管理する機能です。機能ツリーのチェックボックスで権限を変更することができます。”送信”ボタンをクリックすると変更を確定します。なお、管理者の権限を修正することはできません。",
+        "header": "権限管理",
+        "content": {
+          "1": "権限ツリーの編集を確定します。この操作は取り消せません。実行しますか？",
+          "2": "pages.acl.index.content.2",
+          "3": "pages.acl.index.content.3",
+          "4": "pages.acl.index.content.4",
+          "5": "pages.acl.index.content.5",
+          "6": "pages.acl.index.content.6",
+          "7": "pages.acl.index.content.7",
+          "8": "pages.acl.index.content.8",
+          "9": "pages.acl.index.content.9",
+          "10": "pages.acl.index.content.10"
+        },
+        "description": "権限の修正後、権限が反映されるまで多少のタイムラグ(目安:最大1分程度)があります。この場合もサーバー側では正常に権限によるリソースの保護が実施されますので画面の読み込みに失敗する状態となります。稀ではありますが、このようなケースでは再ログインする・画面をリロードするなどの処理を行うことで確実に反映されます。"
+      }
+    },
+    "home": {
+      "index": {
+        "title": "管理システムのダッシュボードです。",
+        "header": "ダッシュボード",
+        "content": {
+          "1": "pages.home.index.content.1",
+          "2": "pages.home.index.content.2",
+          "3": "pages.home.index.content.3",
+          "4": "pages.home.index.content.4",
+          "5": "pages.home.index.content.5",
+          "6": "pages.home.index.content.6",
+          "7": "pages.home.index.content.7",
+          "8": "pages.home.index.content.8",
+          "9": "pages.home.index.content.9",
+          "10": "pages.home.index.content.10"
+        },
+        "description": "管理システムのダッシュボードです。ここでは様々な機能を提供します。"
+      }
+    },
+    "totp": {
+      "index": {
+        "title": "セキュリティ認証の設定ウィザード",
+        "header": "セキュリティ認証",
+        "content": {
+          "1": "インストール",
+          "2": "GoogleAuthenticatorアプリをお使いのスマートフォンにダウンロード及びインストールを行って下さい。",
+          "3": "スマホに該当アプリのインストールが完了した後、”次へ”ボタンをクリックしてください。",
+          "4": "セキュリティ認証の無効ウィザード",
+          "5": "ワンタイムパスワード（トークン）の検証",
+          "6": "セキュリティ認証を無効にする",
+          "7": "セキュリティ認証を有効にする",
+          "8": "GoogleAuthenticatorアプリに表示されたワンタイムパスワード（6桁の数字）を入力して下さい。",
+          "9": "GoogleAuthenticatorアプリを用いて画面に表示されたQRコードをスキャンし、ワンタイムパスワード（6桁の数字）を入力して下さい。",
+          "10": "設定が完了しました。",
+          "11": "設定は正常に終了しました。設定ウィザードを閉じてください。"
+        },
+        "description": "2段階認証とは、ログインID/パスワード入力の他に、セキュリティコードの入力を追加することで、不正に情報にアクセスすることを防止する仕組みです。2段階認証の設定を強くおすすめします。"
+      }
+    },
+    "user": {
+      "index": {
+        "title": "担当者アカウントを管理することができます。新しく担当者のアカウントを作成する場合は”作成”ボタンをクリックして下さい。",
+        "header": "担当者一覧",
+        "content": {
+          "1": "pages.user.index.content.1",
+          "2": "pages.user.index.content.2",
+          "3": "pages.user.index.content.3",
+          "4": "pages.user.index.content.4",
+          "5": "pages.user.index.content.5",
+          "6": "pages.user.index.content.6",
+          "7": "pages.user.index.content.7",
+          "8": "pages.user.index.content.8",
+          "9": "pages.user.index.content.9",
+          "10": "pages.user.index.content.10"
+        },
+        "description": "担当者のアカウントとは本管理システムへログインすることのできる業務担当者を指します。"
+      },
+      "create": {
+        "title": "システムに新しく担当者を登録します。ここで作成した担当者は本管理システムでログインアカウントとして利用することができます。",
+        "header": "担当者の新規登録",
+        "content": {
+          "1": "pages.user.create.content.1",
+          "2": "pages.user.create.content.2",
+          "3": "pages.user.create.content.3",
+          "4": "pages.user.create.content.4",
+          "5": "pages.user.create.content.5",
+          "6": "pages.user.create.content.6",
+          "7": "pages.user.create.content.7",
+          "8": "pages.user.create.content.8",
+          "9": "pages.user.create.content.9",
+          "10": "pages.user.create.content.10"
+        },
+        "description": "新しく作成した担当者を後で編集することも可能です。"
+      },
+      "delete": {
+        "title": "担当者ID:{{id}}({{username}})の削除",
+        "header": "担当者の削除",
+        "content": {
+          "1": "担当者の情報詳細は下記の通りです。削除を実行する場合、下の”削除”ボタンをクリックして下さい。",
+          "2": "該当担当者をシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。実行しますか？",
+          "3": "pages.user.delete.content.3",
+          "4": "pages.user.delete.content.4",
+          "5": "pages.user.delete.content.5",
+          "6": "pages.user.delete.content.6",
+          "7": "pages.user.delete.content.7",
+          "8": "pages.user.delete.content.8",
+          "9": "pages.user.delete.content.9",
+          "10": "pages.user.delete.content.10"
+        },
+        "description": "担当者をシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。"
+      },
+      "detail": {
+        "title": "担当者ID:{{id}}({{username}})詳細",
+        "header": "担当者の詳細",
+        "content": {
+          "1": "顧客の情報詳細は下記の通りです。",
+          "2": "pages.user.detail.content.2",
+          "3": "pages.user.detail.content.3",
+          "4": "pages.user.detail.content.4",
+          "5": "pages.user.detail.content.5",
+          "6": "pages.user.detail.content.6",
+          "7": "pages.user.detail.content.7",
+          "8": "pages.user.detail.content.8",
+          "9": "pages.user.detail.content.9",
+          "10": "pages.user.detail.content.10"
+        },
+        "description": "担当者の詳細をここでは確認することができます。”戻る”ボタンをクリックすると一覧へ戻ります。"
+      },
+      "update": {
+        "title": "担当者ID:{{id}}({{username}})を編集します。",
+        "header": "担当者の編集",
+        "content": {
+          "1": "pages.user.update.content.1",
+          "2": "pages.user.update.content.2",
+          "3": "pages.user.update.content.3",
+          "4": "pages.user.update.content.4",
+          "5": "pages.user.update.content.5",
+          "6": "pages.user.update.content.6",
+          "7": "pages.user.update.content.7",
+          "8": "pages.user.update.content.8",
+          "9": "pages.user.update.content.9",
+          "10": "pages.user.update.content.10"
+        },
+        "description": "IDや一部の固有データを変更することはできません。"
+      }
+    },
+    "error": {
+      "index": {
+        "title": "PagenotFound",
+        "header": "エラー",
+        "content": {
+          "1": "pages.error.index.content.1",
+          "2": "pages.error.index.content.2",
+          "3": "pages.error.index.content.3",
+          "4": "pages.error.index.content.4",
+          "5": "pages.error.index.content.5",
+          "6": "pages.error.index.content.6",
+          "7": "pages.error.index.content.7",
+          "8": "pages.error.index.content.8",
+          "9": "pages.error.index.content.9",
+          "10": "pages.error.index.content.10"
+        },
+        "description": "お探しのページは見つかりませんでした。"
+      }
+    },
+    "login": {
+      "index": {
+        "title": "ログイン",
+        "header": "管理システム",
+        "content": {
+          "1": "セキュリティ認証が必要です。ワンタイムパスワード（トークン）を入力して下さい。",
+          "2": "pages.login.index.content.2",
+          "3": "pages.login.index.content.3",
+          "4": "pages.login.index.content.4",
+          "5": "pages.login.index.content.5",
+          "6": "pages.login.index.content.6",
+          "7": "pages.login.index.content.7",
+          "8": "pages.login.index.content.8",
+          "9": "pages.login.index.content.9",
+          "10": "pages.login.index.content.10"
+        },
+        "description": "ログイン情報を入力して下さい"
+      }
+    },
+    "order": {
+      "index": {
+        "title": "注文管理",
+        "header": "注文管理",
+        "content": {
+          "1": "pages.order.index.content.1",
+          "2": "pages.order.index.content.2",
+          "3": "pages.order.index.content.3",
+          "4": "pages.order.index.content.4",
+          "5": "pages.order.index.content.5",
+          "6": "pages.order.index.content.6",
+          "7": "pages.order.index.content.7",
+          "8": "pages.order.index.content.8",
+          "9": "pages.order.index.content.9",
+          "10": "pages.order.index.content.10"
+        },
+        "description": "注文管理"
+      },
+      "create": {
+        "title": "担当者ID:{{id}}({{username}})を削除します。",
+        "header": "注文の作成",
+        "content": {
+          "1": "pages.order.create.content.1",
+          "2": "pages.order.create.content.2",
+          "3": "pages.order.create.content.3",
+          "4": "pages.order.create.content.4",
+          "5": "pages.order.create.content.5",
+          "6": "pages.order.create.content.6",
+          "7": "pages.order.create.content.7",
+          "8": "pages.order.create.content.8",
+          "9": "pages.order.create.content.9",
+          "10": "pages.order.create.content.10"
+        },
+        "description": "担当者をシステムから削除します。"
+      },
+      "delete": {
+        "title": "担当者ID:{{id}}({{username}})を削除します。",
+        "header": "注文の取消",
+        "content": {
+          "1": "pages.order.delete.content.1",
+          "2": "pages.order.delete.content.2",
+          "3": "pages.order.delete.content.3",
+          "4": "pages.order.delete.content.4",
+          "5": "pages.order.delete.content.5",
+          "6": "pages.order.delete.content.6",
+          "7": "pages.order.delete.content.7",
+          "8": "pages.order.delete.content.8",
+          "9": "pages.order.delete.content.9",
+          "10": "pages.order.delete.content.10"
+        },
+        "description": "担当者をシステムから削除します。"
+      },
+      "detail": {
+        "title": "担当者ID:{{id}}({{username}})を削除します。",
+        "header": "注文の詳細",
+        "content": {
+          "1": "pages.order.detail.content.1",
+          "2": "pages.order.detail.content.2",
+          "3": "pages.order.detail.content.3",
+          "4": "pages.order.detail.content.4",
+          "5": "pages.order.detail.content.5",
+          "6": "pages.order.detail.content.6",
+          "7": "pages.order.detail.content.7",
+          "8": "pages.order.detail.content.8",
+          "9": "pages.order.detail.content.9",
+          "10": "pages.order.detail.content.10"
+        },
+        "description": "担当者をシステムから削除します。"
+      },
+      "update": {
+        "title": "担当者ID:{{id}}({{username}})を削除します。",
+        "header": "注文の更新",
+        "content": {
+          "1": "pages.order.update.content.1",
+          "2": "pages.order.update.content.2",
+          "3": "pages.order.update.content.3",
+          "4": "pages.order.update.content.4",
+          "5": "pages.order.update.content.5",
+          "6": "pages.order.update.content.6",
+          "7": "pages.order.update.content.7",
+          "8": "pages.order.update.content.8",
+          "9": "pages.order.update.content.9",
+          "10": "pages.order.update.content.10"
+        },
+        "description": "担当者をシステムから削除します。"
+      }
+    },
+    "account": {
+      "index": {
+        "title": "ログインアカウントの詳細です。情報の編集を行う場合、”更新”ボタンを、セキュリティ認証の設定を行う場合、”更新”ボタンをクリックして下さい。",
+        "header": "アカウント設定",
+        "content": {
+          "1": "アカウント詳細",
+          "2": "pages.account.index.content.2",
+          "3": "pages.account.index.content.3",
+          "4": "pages.account.index.content.4",
+          "5": "pages.account.index.content.5",
+          "6": "pages.account.index.content.6",
+          "7": "pages.account.index.content.7",
+          "8": "pages.account.index.content.8",
+          "9": "pages.account.index.content.9",
+          "10": "pages.account.index.content.10"
+        },
+        "description": "ログインアカウントの変更（名前、メールアドレスや電話番号、パスワードの変更）を行うことができます。ログインIDを変更することはできません。"
+      },
+      "create": {
+        "title": "ログインアカウントの情報編集を行います。入力完了後、”送信”ボタンをクリックして下さい。",
+        "header": "アカウントの編集",
+        "content": {
+          "1": "pages.account.create.content.1",
+          "2": "pages.account.create.content.2",
+          "3": "pages.account.create.content.3",
+          "4": "pages.account.create.content.4",
+          "5": "pages.account.create.content.5",
+          "6": "pages.account.create.content.6",
+          "7": "pages.account.create.content.7",
+          "8": "pages.account.create.content.8",
+          "9": "pages.account.create.content.9",
+          "10": "pages.account.create.content.10"
+        },
+        "description": "一部の入力項目（ログインID、電話番号、Eメールアドレス）は重複不可能となっており、システムにすでに登録されている場合は、ご利用頂けません。"
+      },
+      "security": {
+        "title": "ログインアカウントのセキュリティを強化するため、2段階認証を設定・設定解除することができます。",
+        "header": "アカウント設定（セキュリティ認証の設定・解除）",
+        "content": {
+          "1": "アカウントは現在2段階認証で保護されています。設定解除する場合、下の”設定”ボタンをクリックしてください。",
+          "2": "アカウントは現在保護されていません。セキュリティを強化する場合、下の”設定”ボタンをクリックしてください。",
+          "3": "pages.account.security.content.3",
+          "4": "pages.account.security.content.4",
+          "5": "pages.account.security.content.5",
+          "6": "pages.account.security.content.6",
+          "7": "pages.account.security.content.7",
+          "8": "pages.account.security.content.8",
+          "9": "pages.account.security.content.9",
+          "10": "pages.account.security.content.10"
+        },
+        "description": "2段階認証の設定にはGoogleAuthenticatorアプリをスマートフォンにインストールする必要があります。2段階認証の設定後、設定を解除する際にワンタイムパスワードが必要となりますので機種変更などの際はご注意下さい。"
+      }
+    },
+    "product": {
+      "index": {
+        "title": "販売商品を作成・修正・削除することができます。",
+        "header": "販売商品管理",
+        "content": {
+          "1": "pages.product.index.content.1",
+          "2": "pages.product.index.content.2",
+          "3": "pages.product.index.content.3",
+          "4": "pages.product.index.content.4",
+          "5": "pages.product.index.content.5",
+          "6": "pages.product.index.content.6",
+          "7": "pages.product.index.content.7",
+          "8": "pages.product.index.content.8",
+          "9": "pages.product.index.content.9",
+          "10": "pages.product.index.content.10"
+        },
+        "description": "販売商品は商品カテゴリーに基づいて作成されます。設定できる価格単価はUSDベースでの表示となります。注文時の価格はこの価格に基づいて仮想通貨レートに換算された金額が表示されます。"
+      },
+      "create": {
+        "title": "システムに新しく販売商品を登録します。",
+        "header": "販売商品の新規登録",
+        "content": {
+          "1": "pages.product.create.content.1",
+          "2": "pages.product.create.content.2",
+          "3": "pages.product.create.content.3",
+          "4": "pages.product.create.content.4",
+          "5": "pages.product.create.content.5",
+          "6": "pages.product.create.content.6",
+          "7": "pages.product.create.content.7",
+          "8": "pages.product.create.content.8",
+          "9": "pages.product.create.content.9",
+          "10": "pages.product.create.content.10"
+        },
+        "description": "新しく作成した販売商品を後で編集することも可能です。なお、商品カテゴリが１つも存在しない場合、販売商品の新規登録を行うことはできません。"
+      },
+      "delete": {
+        "title": "販売商品ID:{{id}}({{name}})の削除",
+        "header": "販売商品の削除",
+        "content": {
+          "1": "販売商品の情報詳細は下記の通りです。削除を実行する場合、下の”削除”ボタンをクリックして下さい。",
+          "2": "該当販売商品をシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。実行しますか？",
+          "3": "pages.product.delete.content.3",
+          "4": "pages.product.delete.content.4",
+          "5": "pages.product.delete.content.5",
+          "6": "pages.product.delete.content.6",
+          "7": "pages.product.delete.content.7",
+          "8": "pages.product.delete.content.8",
+          "9": "pages.product.delete.content.9",
+          "10": "pages.product.delete.content.10"
+        },
+        "description": "該当販売商品をシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。"
+      },
+      "detail": {
+        "title": "販売商品ID:{{id}}({{name}})詳細",
+        "header": "販売商品の詳細",
+        "content": {
+          "1": "販売商品の情報詳細は下記の通りです。",
+          "2": "pages.product.detail.content.2",
+          "3": "pages.product.detail.content.3",
+          "4": "pages.product.detail.content.4",
+          "5": "pages.product.detail.content.5",
+          "6": "pages.product.detail.content.6",
+          "7": "pages.product.detail.content.7",
+          "8": "pages.product.detail.content.8",
+          "9": "pages.product.detail.content.9",
+          "10": "pages.product.detail.content.10"
+        },
+        "description": "販売商品の詳細をここでは確認することができます。”戻る”ボタンをクリックすると一覧へ戻ります。"
+      },
+      "update": {
+        "title": "販売商品ID:{{id}}({{name}})を編集します。",
+        "header": "販売商品の編集",
+        "content": {
+          "1": "pages.product.update.content.1",
+          "2": "pages.product.update.content.2",
+          "3": "pages.product.update.content.3",
+          "4": "pages.product.update.content.4",
+          "5": "pages.product.update.content.5",
+          "6": "pages.product.update.content.6",
+          "7": "pages.product.update.content.7",
+          "8": "pages.product.update.content.8",
+          "9": "pages.product.update.content.9",
+          "10": "pages.product.update.content.10"
+        },
+        "description": "IDや一部の固有データを変更することはできません。"
+      }
+    },
+    "setting": {
+      "index": {
+        "title": "システムの設定画面です。ここでは支払用仮想通貨アドレスなどを設定することができます。",
+        "header": "システム設定",
+        "content": {
+          "1": "支払用仮想通貨アドレス",
+          "2": "その他",
+          "3": "支払用仮想通貨アドレスは設定済みです。",
+          "4": "支払用仮想通貨アドレスが設定されていません。一部の機能が正常に動作しない可能性があります。",
+          "5": "pages.setting.index.content.5",
+          "6": "pages.setting.index.content.6",
+          "7": "pages.setting.index.content.7",
+          "8": "pages.setting.index.content.8",
+          "9": "pages.setting.index.content.9",
+          "10": "pages.setting.index.content.10"
+        },
+        "description": "システムの設定が完了していない場合、一部の機能は正常に動作しません。"
+      },
+      "create": {
+        "title": "ログインアカウントの情報編集を行います。入力完了後、”送信”ボタンをクリックして下さい。",
+        "header": "システム設定の編集",
+        "content": {
+          "1": "pages.setting.create.content.1",
+          "2": "pages.setting.create.content.2",
+          "3": "pages.setting.create.content.3",
+          "4": "pages.setting.create.content.4",
+          "5": "pages.setting.create.content.5",
+          "6": "pages.setting.create.content.6",
+          "7": "pages.setting.create.content.7",
+          "8": "pages.setting.create.content.8",
+          "9": "pages.setting.create.content.9",
+          "10": "pages.setting.create.content.10"
+        },
+        "description": "一部の入力項目（ログインID、電話番号、Eメールアドレス）は重複不可能となっており、システムにすでに登録されている場合は、ご利用頂けません。"
+      }
+    },
+    "webpage": {
+      "index": {
+        "title": "販売商品に関連するWEBページを作成・修正・削除することができます。",
+        "header": "WEBページ管理",
+        "content": {
+          "1": "pages.webpage.index.content.1",
+          "2": "pages.webpage.index.content.2",
+          "3": "pages.webpage.index.content.3",
+          "4": "pages.webpage.index.content.4",
+          "5": "pages.webpage.index.content.5",
+          "6": "pages.webpage.index.content.6",
+          "7": "pages.webpage.index.content.7",
+          "8": "pages.webpage.index.content.8",
+          "9": "pages.webpage.index.content.9",
+          "10": "pages.webpage.index.content.10"
+        },
+        "description": "WEBページの設定は販売商品を設定する上で必要です。WEBページが存在しない場合、販売商品を作成することはできません。また商品カテゴリーを削除すると関連する販売商品も削除されます。"
+      },
+      "create": {
+        "title": "システムに新しくWEBページを登録します。ここで作成したWEBページは販売商品に設定することができます。",
+        "header": "WEBページの新規登録",
+        "content": {
+          "1": "pages.webpage.create.content.1",
+          "2": "pages.webpage.create.content.2",
+          "3": "pages.webpage.create.content.3",
+          "4": "pages.webpage.create.content.4",
+          "5": "pages.webpage.create.content.5",
+          "6": "pages.webpage.create.content.6",
+          "7": "pages.webpage.create.content.7",
+          "8": "pages.webpage.create.content.8",
+          "9": "pages.webpage.create.content.9",
+          "10": "pages.webpage.create.content.10"
+        },
+        "description": "新しく作成したWEBページを後で編集することも可能です。"
+      },
+      "delete": {
+        "title": "WEBページID:{{id}}({{pageType}}/{{locale}})の削除",
+        "header": "WEBページの削除",
+        "content": {
+          "1": "WEBページの情報詳細は下記の通りです。削除を実行する場合、下の”削除”ボタンをクリックして下さい。",
+          "2": "該当WEBページをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。実行しますか？",
+          "3": "pages.webpage.delete.content.3",
+          "4": "pages.webpage.delete.content.4",
+          "5": "pages.webpage.delete.content.5",
+          "6": "pages.webpage.delete.content.6",
+          "7": "pages.webpage.delete.content.7",
+          "8": "pages.webpage.delete.content.8",
+          "9": "pages.webpage.delete.content.9",
+          "10": "pages.webpage.delete.content.10"
+        },
+        "description": "該当WEBページをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。"
+      },
+      "detail": {
+        "title": "WEBページID:{{id}}({{pageType}}/{{locale}})詳細",
+        "header": "WEBページの詳細",
+        "content": {
+          "1": "WEBページ情報詳細は下記の通りです。",
+          "2": "pages.webpage.detail.content.2",
+          "3": "pages.webpage.detail.content.3",
+          "4": "pages.webpage.detail.content.4",
+          "5": "pages.webpage.detail.content.5",
+          "6": "pages.webpage.detail.content.6",
+          "7": "pages.webpage.detail.content.7",
+          "8": "pages.webpage.detail.content.8",
+          "9": "pages.webpage.detail.content.9",
+          "10": "pages.webpage.detail.content.10"
+        },
+        "description": "WEBページの詳細をここでは確認することができます。”戻る”ボタンをクリックすると一覧へ戻ります。"
+      },
+      "update": {
+        "title": "WEBページID:{{id}}({{pageType}}/{{locale}})を編集します。",
+        "header": "WEBページの編集",
+        "content": {
+          "1": "WEBページの編集を確定します。この操作は取り消せません。実行しますか？",
+          "2": "pages.webpage.update.content.2",
+          "3": "pages.webpage.update.content.3",
+          "4": "pages.webpage.update.content.4",
+          "5": "pages.webpage.update.content.5",
+          "6": "pages.webpage.update.content.6",
+          "7": "pages.webpage.update.content.7",
+          "8": "pages.webpage.update.content.8",
+          "9": "pages.webpage.update.content.9",
+          "10": "pages.webpage.update.content.10"
+        },
+        "description": "IDや一部の固有データを変更することはできません。変更時画像を変更したくない場合はそのまま送信ボタンをクリックして下さい。"
+      }
+    },
+    "category": {
+      "index": {
+        "title": "販売商品に関連する商品カテゴリーを作成・修正・削除することができます。",
+        "header": "商品カテゴリー管理",
+        "content": {
+          "1": "pages.category.index.content.1",
+          "2": "pages.category.index.content.2",
+          "3": "pages.category.index.content.3",
+          "4": "pages.category.index.content.4",
+          "5": "pages.category.index.content.5",
+          "6": "pages.category.index.content.6",
+          "7": "pages.category.index.content.7",
+          "8": "pages.category.index.content.8",
+          "9": "pages.category.index.content.9",
+          "10": "pages.category.index.content.10"
+        },
+        "description": "商品カテゴリーの設定は販売商品を設定する上で必要です。商品カテゴリーが存在しない場合、販売商品を作成することはできません。また商品カテゴリーを削除すると関連する販売商品も削除されます。"
+      },
+      "create": {
+        "title": "システムに新しく商品カテゴリーを登録します。ここで作成した商品カテゴリーは販売商品に設定することができます。",
+        "header": "商品カテゴリーの新規登録",
+        "content": {
+          "1": "pages.category.create.content.1",
+          "2": "pages.category.create.content.2",
+          "3": "pages.category.create.content.3",
+          "4": "pages.category.create.content.4",
+          "5": "pages.category.create.content.5",
+          "6": "pages.category.create.content.6",
+          "7": "pages.category.create.content.7",
+          "8": "pages.category.create.content.8",
+          "9": "pages.category.create.content.9",
+          "10": "pages.category.create.content.10"
+        },
+        "description": "新しく作成した商品カテゴリーを後で編集することも可能です。"
+      },
+      "delete": {
+        "title": "商品カテゴリーID:{{id}}({{name}})の削除",
+        "header": "商品カテゴリーの削除",
+        "content": {
+          "1": "商品カテゴリーの情報詳細は下記の通りです。削除を実行する場合、下の”削除”ボタンをクリックして下さい。",
+          "2": "該当商品カテゴリーをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。実行しますか？",
+          "3": "pages.category.delete.content.3",
+          "4": "pages.category.delete.content.4",
+          "5": "pages.category.delete.content.5",
+          "6": "pages.category.delete.content.6",
+          "7": "pages.category.delete.content.7",
+          "8": "pages.category.delete.content.8",
+          "9": "pages.category.delete.content.9",
+          "10": "pages.category.delete.content.10"
+        },
+        "description": "該当商品カテゴリーをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。"
+      },
+      "detail": {
+        "title": "商品カテゴリーID:{{id}}({{name}})詳細",
+        "header": "商品カテゴリーの詳細",
+        "content": {
+          "1": "商品カテゴリーの情報詳細は下記の通りです。",
+          "2": "pages.category.detail.content.2",
+          "3": "pages.category.detail.content.3",
+          "4": "pages.category.detail.content.4",
+          "5": "pages.category.detail.content.5",
+          "6": "pages.category.detail.content.6",
+          "7": "pages.category.detail.content.7",
+          "8": "pages.category.detail.content.8",
+          "9": "pages.category.detail.content.9",
+          "10": "pages.category.detail.content.10"
+        },
+        "description": "商品カテゴリーの詳細をここでは確認することができます。”戻る”ボタンをクリックすると一覧へ戻ります。"
+      },
+      "update": {
+        "title": "商品カテゴリーID:{{id}}({{name}})を編集します。",
+        "header": "商品カテゴリーの編集",
+        "content": {
+          "1": "pages.category.update.content.1",
+          "2": "pages.category.update.content.2",
+          "3": "pages.category.update.content.3",
+          "4": "pages.category.update.content.4",
+          "5": "pages.category.update.content.5",
+          "6": "pages.category.update.content.6",
+          "7": "pages.category.update.content.7",
+          "8": "pages.category.update.content.8",
+          "9": "pages.category.update.content.9",
+          "10": "pages.category.update.content.10"
+        },
+        "description": "IDや一部の固有データを変更することはできません。変更時画像を変更したくない場合はそのまま送信ボタンをクリックして下さい。"
+      }
+    },
+    "customer": {
+      "index": {
+        "title": "顧客データを検索し、情報の閲覧・修正・削除することができます。",
+        "header": "顧客データ管理",
+        "content": {
+          "1": "pages.customer.index.content.1",
+          "2": "pages.customer.index.content.2",
+          "3": "pages.customer.index.content.3",
+          "4": "pages.customer.index.content.4",
+          "5": "pages.customer.index.content.5",
+          "6": "pages.customer.index.content.6",
+          "7": "pages.customer.index.content.7",
+          "8": "pages.customer.index.content.8",
+          "9": "pages.customer.index.content.9",
+          "10": "pages.customer.index.content.10"
+        },
+        "description": "顧客データはユーザーページ（顧客専用サイト）の利用者です。ユーザーページ（顧客専用サイト）のログインアカウントとして利用できます。アカウントをロックすることで該当顧客はログインできなくなります。"
+      },
+      "create": {
+        "title": "システムに新しく顧客データを登録します。ここで作成した顧客データはユーザーページ（顧客専用サイト）でログインアカウントとして利用することができます。",
+        "header": "顧客データの新規登録",
+        "content": {
+          "1": "pages.customer.create.content.1",
+          "2": "pages.customer.create.content.2",
+          "3": "pages.customer.create.content.3",
+          "4": "pages.customer.create.content.4",
+          "5": "pages.customer.create.content.5",
+          "6": "pages.customer.create.content.6",
+          "7": "pages.customer.create.content.7",
+          "8": "pages.customer.create.content.8",
+          "9": "pages.customer.create.content.9",
+          "10": "pages.customer.create.content.10"
+        },
+        "description": "新しく作成した顧客データを後で編集することも可能です。"
+      },
+      "delete": {
+        "title": "顧客データID:{{id}}({{username}})の削除",
+        "header": "顧客データの削除",
+        "content": {
+          "1": "顧客データの情報詳細は下記の通りです。削除を実行する場合、下の”削除”ボタンをクリックして下さい。",
+          "2": "該当顧客データをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。実行しますか？",
+          "3": "pages.customer.delete.content.3",
+          "4": "pages.customer.delete.content.4",
+          "5": "pages.customer.delete.content.5",
+          "6": "pages.customer.delete.content.6",
+          "7": "pages.customer.delete.content.7",
+          "8": "pages.customer.delete.content.8",
+          "9": "pages.customer.delete.content.9",
+          "10": "pages.customer.delete.content.10"
+        },
+        "description": "顧客データをシステムから削除します。また削除処理後、関連するデータもすべて削除されます。この操作は取り消せません。"
+      },
+      "detail": {
+        "title": "顧客データID:{{id}}({{username}})詳細",
+        "header": "顧客データの詳細",
+        "content": {
+          "1": "顧客の情報詳細は下記の通りです。",
+          "2": "pages.customer.detail.content.2",
+          "3": "pages.customer.detail.content.3",
+          "4": "pages.customer.detail.content.4",
+          "5": "pages.customer.detail.content.5",
+          "6": "pages.customer.detail.content.6",
+          "7": "pages.customer.detail.content.7",
+          "8": "pages.customer.detail.content.8",
+          "9": "pages.customer.detail.content.9",
+          "10": "pages.customer.detail.content.10"
+        },
+        "description": "顧客データの詳細をここでは確認することができます。”戻る”ボタンをクリックすると一覧へ戻ります。"
+      },
+      "update": {
+        "title": "顧客データID:{{id}}({{username}})を編集します。",
+        "header": "顧客データの編集",
+        "content": {
+          "1": "pages.customer.update.content.1",
+          "2": "pages.customer.update.content.2",
+          "3": "pages.customer.update.content.3",
+          "4": "pages.customer.update.content.4",
+          "5": "pages.customer.update.content.5",
+          "6": "pages.customer.update.content.6",
+          "7": "pages.customer.update.content.7",
+          "8": "pages.customer.update.content.8",
+          "9": "pages.customer.update.content.9",
+          "10": "pages.customer.update.content.10"
+        },
+        "description": "IDや一部の固有データを変更することはできません。"
+      }
+    },
+    "language": {
+      "index": {
+        "title": "システム内部の言語を定義・修正することができます。",
+        "header": "言語管理",
+        "content": {
+          "1": "pages.language.index.content.1",
+          "2": "pages.language.index.content.2",
+          "3": "pages.language.index.content.3",
+          "4": "pages.language.index.content.4",
+          "5": "pages.language.index.content.5",
+          "6": "pages.language.index.content.6",
+          "7": "pages.language.index.content.7",
+          "8": "pages.language.index.content.8",
+          "9": "pages.language.index.content.9",
+          "10": "pages.language.index.content.10"
+        },
+        "description": "言語ファイルはJSON形式で定義されています。現在英語・日本語のみ対応しています。※編集後、即時反映されるわけではなくページのログアウトや画面のリロードのタイミングで言語は更新されます。"
+      },
+      "create": {
+        "title": "",
+        "header": "",
+        "content": {
+          "1": "pages.language.create.content.1",
+          "2": "pages.language.create.content.2",
+          "3": "pages.language.create.content.3",
+          "4": "pages.language.create.content.4",
+          "5": "pages.language.create.content.5",
+          "6": "pages.language.create.content.6",
+          "7": "pages.language.create.content.7",
+          "8": "pages.language.create.content.8",
+          "9": "pages.language.create.content.9",
+          "10": "pages.language.create.content.10"
+        },
+        "description": ""
+      },
+      "delete": {
+        "title": "言語ID:{{id}} ({{locale}}/{{scope}})の削除",
+        "header": "言語の削除",
+        "content": {
+          "1": "",
+          "2": "",
+          "3": "pages.language.delete.content.3",
+          "4": "pages.language.delete.content.4",
+          "5": "pages.language.delete.content.5",
+          "6": "pages.language.delete.content.6",
+          "7": "pages.language.delete.content.7",
+          "8": "pages.language.delete.content.8",
+          "9": "pages.language.delete.content.9",
+          "10": "pages.language.delete.content.10"
+        },
+        "description": ""
+      },
+      "detail": {
+        "title": "言語ID:{{id}} ({{locale}}/{{scope}})の詳細",
+        "header": "言語の詳細",
+        "content": {
+          "1": "商品カテゴリーの情報詳細は下記の通りです。",
+          "2": "pages.language.detail.content.2",
+          "3": "pages.language.detail.content.3",
+          "4": "pages.language.detail.content.4",
+          "5": "pages.language.detail.content.5",
+          "6": "pages.language.detail.content.6",
+          "7": "pages.language.detail.content.7",
+          "8": "pages.language.detail.content.8",
+          "9": "pages.language.detail.content.9",
+          "10": "pages.language.detail.content.10"
+        },
+        "description": "言語の詳細はここで確認することができます。"
+      },
+      "update": {
+        "title": "言語ID:{{id}} ({{locale}}/{{scope}}) を編集します。",
+        "header": "言語の編集",
+        "content": {
+          "1": "言語ファイルの編集を確定します。この操作は取り消せません。実行しますか？",
+          "2": "pages.language.update.content.2",
+          "3": "pages.language.update.content.3",
+          "4": "pages.language.update.content.4",
+          "5": "pages.language.update.content.5",
+          "6": "pages.language.update.content.6",
+          "7": "pages.language.update.content.7",
+          "8": "pages.language.update.content.8",
+          "9": "pages.language.update.content.9",
+          "10": "pages.language.update.content.10"
+        },
+        "description": "言語の編集時、JSONのスキーマを破壊しないように注意して下さい。編集後、即時反映されるわけではなくページのログアウトや画面のリロードのタイミングで言語は更新されます。※本機能の利用に当たりJSONに関する知識を有していることが前提となります。"
+      }
+    }
+  },
+  "common": {
+    "en": "English",
+    "id": "ID",
+    "ja": "日本語",
+    "ok": "OK",
+    "qr": "QR Code",
+    "to": "end data",
+    "csv": "CSV",
+    "fee": "fee(%)",
+    "img": "image",
+    "row": "rows",
+    "back": "back",
+    "file": "ファイル",
+    "from": "start date",
+    "home": "dashboard",
+    "html": "HTML",
+    "i18N": "languages",
+    "mode": "JSONを直接編集する",
+    "name": "名称",
+    "next": "次へ",
+    "none": "",
+    "read": "読取・閲覧",
+    "role": "ロール",
+    "rows": "total",
+    "totp": "セキュリティ認証",
+    "type": "type",
+    "clear": "clear",
+    "close": "close",
+    "email": "Eメールアドレス",
+    "limit": "上限",
+    "login": "ログイン",
+    "other": "その他",
+    "phone": "電話番号",
+    "price": "価格",
+    "query": "検索語句",
+    "range": "数値",
+    "roles": {
+      "na": "N/A",
+      "agent": "agent",
+      "manager": "マネージャー",
+      "unknown": "unknown",
+      "operator": "オペレーター",
+      "head_office": "ヘッド",
+      "master_agent": "マスターエージェント",
+      "administrator": "管理者"
+    },
+    "scope": "スコープ",
+    "steps": "ステップ",
+    "title": "タイトル",
+    "token": "トークン",
+    "action": "操作",
+    "amount": "数量",
+    "backTo": "{{to}}へ戻る",
+    "cancel": "キャンセル",
+    "change": "変更",
+    "config": "config",
+    "create": "作成",
+    "delete": "削除",
+    "detail": "詳細",
+    "finish": "終了",
+    "layout": "レイアウト",
+    "locale": "言語",
+    "noData": "データがありません",
+    "notSet": "未設定",
+    "online": "ONLINE",
+    "reload": "再読込",
+    "scopes": { "public": "顧客ページ", "private": "管理画面" },
+    "search": "検索",
+    "select": "選択",
+    "sortBy": "ソート",
+    "status": "状態",
+    "submit": "送信",
+    "toggle": "切替",
+    "update": "更新",
+    "verify": "認証",
+    "address": "仮想通貨アドレス",
+    "appName": "管理システム",
+    "confirm": "確認",
+    "content": "コンテンツ",
+    "enabled": "有効",
+    "isHuman": "common.isHuman",
+    "isRobot": "common.isRobot",
+    "loading": "ローディング",
+    "locales": { "en": "English", "ja": "日本語" },
+    "offline": "OFFLINE",
+    "options": "オプション",
+    "perPage": "1ページあたり",
+    "remarks": "備考",
+    "setting": "設定",
+    "txPrice": "価格(仮想通貨換算)",
+    "complete": "完了",
+    "criteria": { "title": "検索条件", "createdAt": "日時による検索" },
+    "disabled": "無効",
+    "lastName": "苗字(姓)",
+    "pageType": "ページタイプ",
+    "password": "パスワード",
+    "previous": "前へ",
+    "remember": "認証情報の記憶",
+    "security": "セキュリティ",
+    "statuses": {
+      "active": "通常",
+      "pending": "保留",
+      "unknown": "不明",
+      "inactive": "無効"
+    },
+    "username": "ログインID",
+    "validate": "検証",
+    "countryId": "国",
+    "createdAt": "作成日時",
+    "createdId": "作成者",
+    "deletedAt": "更新日時",
+    "deletedId": "削除者",
+    "firstName": "名前(名)",
+    "lastLogin": "最終ログイン",
+    "pageTypes": {
+      "faq": "FAQ",
+      "free": "フリー",
+      "about": "概要",
+      "service": "サービス"
+    },
+    "productId": "販売商品",
+    "selectAll": "全選択",
+    "updatedAt": "更新日時",
+    "updatedId": "更新者",
+    "backToHome": "ホームへ戻る",
+    "categoryId": "商品カテゴリー",
+    "currencyId": "通貨",
+    "customerId": "顧客",
+    "description": "説明",
+    "exportAsCsv": "エクスポート",
+    "pleaseSelect": "選択してください。",
+    "toggleColumn": "非表示カラムの切替",
+    "changePassword": "パスワードの変更",
+    "confirmPassword": "パスワードの再確認"
+  },
+  "errors": {
+    "loginFailed": "ログインできませんでした。ログイン情報をお確かめの上もう一度お試し下さい。",
+    "deleteFailed": "削除処理を完了できませんでした。",
+    "invalidToken": "ワンタイムパスワード（トークン）が不正です。入力をお確かめの上もう一度お試し下さい。",
+    "loginSuccess": "{{username}}でログイン中",
+    "networkError": "現在オフラインです。インターネットの接続を確認して下さい。",
+    "unknownError": "予期せぬエラーが発生しました。",
+    "updateFailed": "更新処理を完了できませんでした。",
+    "deleteSuccess": "削除処理は正常に完了しました。",
+    "updateSuccess": "更新処理は正常に完了しました。"
+  },
+  "sentry": {
+    "title": "クラッシュレポート",
+    "subtitle": "ご不便をおかけして申し訳ありません。",
+    "labelName": "ユーザー名",
+    "subtitle2": "詳細な情報の提供にご協力下さい。",
+    "labelClose": "閉じる",
+    "labelEmail": "メールアドレス",
+    "labelSubmit": "クラッシュレポートを送信",
+    "errorGeneric": "クラッシュレポートを送信できませんでした。",
+    "labelComments": "問題の詳細",
+    "errorFormEntry": "フォームの内容は全て必須項目です。",
+    "successMessage": "ご協力ありがとうございました。"
+  },
+  "validation": {
+    "hint": {
+      "date": "日付フォーマットで入力",
+      "file": "ファイルを選択",
+      "json": "JSONフォーマットで入力",
+      "none": "",
+      "text": "テキストを入力(半角・全角)",
+      "time": "時間を入力",
+      "email": "Eメールアドレスを入力",
+      "query": "検索語句は最低4文字以上入力",
+      "token": "validation.hint.token",
+      "number": "数字を入力",
+      "select": "選択肢の中から一つ選択",
+      "confirm": "確認のため再度入力",
+      "alphaNum": "半角英数字で入力",
+      "textarea": "テキストを自由入力"
+    },
+    "messages": {
+      "max": "数値は最大{{max}}以下で入力して下さい。",
+      "min": "数値は最小{{min}}以上で入力して下さい。",
+      "file": "ファイルアップロードは不正です。",
+      "async": "入力された値はご利用頂けません。",
+      "email": "Eメールアドレスが不正です。",
+      "isDate": "日付の形式が不正です。",
+      "isJson": "JSON形式で入力して下さい。",
+      "isJsonSchema": "JSONスキーマの項目が不正です。{{property}}",
+      "isTime": "時刻の形式が不正です。",
+      "alphaNum": "半角英数字で入力して下さい。",
+      "fileSize": "ファイルサイズが大きすぎます。",
+      "fullSize": "全角で入力して下さい。",
+      "halfSize": "半角で入力して下さい。",
+      "isNumber": "数字で入力して下さい。",
+      "required": "必須項目です。",
+      "isDecimal": "validation.messages.isDecimal",
+      "maxLength": "最大文字数{{length}}文字以下で入力して下さい。",
+      "minLength": "最小文字数{{length}}文字以上で入力して下さい。",
+      "isDateRange": "終了日は開始日より前の日時を設定することはできません。",
+      "fileExtension": "ファイルの形式が不正です。",
+      "isSamePassword": "一致しません。",
+      "invalidPassword": "パスワードが正しくありません。",
+      "insecurePassword": "パスワードの強度が不十分です。"
+    }
+  },
+  "placeholder": {
+    "fee": "取引手数料(%)を入力",
+    "img": "placeholder.img",
+    "date": "日付を指定",
+    "file": "ファイルを選択",
+    "html": "HTMLを入力",
+    "i18N": "言語ファイルのJSONを定義",
+    "name": "名称を入力",
+    "role": "ロールを選択",
+    "time": "時刻を指定",
+    "email": "Eメールアドレスを入力",
+    "phone": "電話番号を入力",
+    "price": "価格を入力",
+    "query": "入力して検索",
+    "scope": "placeholder.scope",
+    "token": "数字6桁",
+    "config": "placeholder.config",
+    "locale": "言語を選択",
+    "status": "状態を選択",
+    "address": "仮想通貨アドレスを入力",
+    "remarks": "備考を入力",
+    "lastName": "苗字(姓)を入力",
+    "pageType": "placeholder.pageType",
+    "password": "パスワードを入力",
+    "username": "ログインIDを入力",
+    "countryId": "国を選択",
+    "firstName": "名前(名)を入力",
+    "categoryId": "select category",
+    "currencyId": "select currency",
+    "customerId": "select customer",
+    "confirmPassword": "confirm password"
+  }
+}

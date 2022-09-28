@@ -1,0 +1,12 @@
+<clr-modal #$modal [(clrModalOpen)]="isOpen" [clrModalClosable]="options?.isClosable" [clrModalSize]="options?.size"
+    [clrModalStaticBackdrop]="options?.hasBackdrop" [clrModalSkipAnimation]="options?.skipAnimation">
+    <h3 class="modal-title">
+        <ng-content select="[role=modal-title]"></ng-content>
+    </h3>
+    <div class="modal-body">
+        <ng-content select="[role=modal-body]"></ng-content>
+    </div>
+    <div class="modal-footer">
+        <ng-content select="[role=modal-footer]"></ng-content>
+    </div>
+</clr-modal>

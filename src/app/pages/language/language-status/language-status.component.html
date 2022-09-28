@@ -1,0 +1,48 @@
+<form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="clr-row">
+        <div class="clr-col-12" *ngIf="error">
+            <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+        </div>
+        <div class="clr-col-12">
+            <clr-input-container>
+                <label class="" for="scope">{{'common.scope'|translate}}</label>
+                <input type="text" id="scope" name="scope" [placeholder]="'placeholder.scope'|translate"
+                    formControlName="scope" autocomplete="off" clrInput required readonly />
+                <clr-control-helper>{{'validation.hint.text'|translate}}</clr-control-helper>
+                <clr-control-error *ngIf="hasError(getFormCtrl('scope'))">
+                    <ng-container *ngIf="hasErrorRequired(getFormCtrl('scope'))">
+                        {{'validation.messages.required'|translate}}
+                    </ng-container>
+                </clr-control-error>
+            </clr-input-container>
+        </div>
+        <div class="clr-col-12">
+            <clr-input-container>
+                <label class="" for="locale">{{'common.locale'|translate}}</label>
+                <input type="text" id="locale" name="locale" [placeholder]="'placeholder.locale'|translate"
+                    formControlName="locale" autocomplete="off" clrInput required readonly />
+                <clr-control-helper>{{'validation.hint.text'|translate}}</clr-control-helper>
+                <clr-control-error *ngIf="hasError(getFormCtrl('locale'))">
+                    <ng-container *ngIf="hasErrorRequired(getFormCtrl('locale'))">
+                        {{'validation.messages.required'|translate}}
+                    </ng-container>
+                </clr-control-error>
+            </clr-input-container>
+        </div>
+        <div class="clr-col-12">
+            <clr-select-container>
+                <label class="" for="status">{{'common.status'|translate}}</label>
+                <select clrSelect [clrFocusOnViewInit]="true" id="status" name="status" formControlName="status"
+                    [compareWith]="defaultCompareWith" required>
+                    <option *ngFor="let status of statuses" [ngValue]="status">{{status|status:'translate'}}</option>
+                </select>
+                <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+                <clr-control-error>
+                    <ng-container *ngIf="hasErrorRequired(getFormCtrl('status'))">
+                        {{'validation.messages.required'|translate}}
+                    </ng-container>
+                </clr-control-error>
+            </clr-select-container>
+        </div>
+    </div>
+</form>

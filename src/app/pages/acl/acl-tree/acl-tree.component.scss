@@ -1,0 +1,12 @@
+:host {
+  .scroll {
+    height: 30rem;
+    overflow-y: scroll;
+  }
+
+  .cursor-notallowed *,
+  .cursor-notallowed ::ng-deep * {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+}

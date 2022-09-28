@@ -1,0 +1,22 @@
+<ng-container *ngIf="!isOnline">
+    <div class="offline-wrapper">
+        <div class="offline-container">
+            <div class="clr-row">
+                <div class="clr-col-12">
+                    <admin-alert [options]="{ level: 'danger' }">
+                        <ng-container role="text">
+                            <ng-container>{{'errors.networkError'|translate}}</ng-container>
+                        </ng-container>
+                        <ng-container role="actions">
+                            <admin-button (click$)="reload()"
+                                [options]="{ type: 'button', clazz: 'btn btn-sm btn-inverse' }"
+                                [disabled]="hasFormError">
+                                {{'common.reload'|translate}}
+                            </admin-button>
+                        </ng-container>
+                    </admin-alert>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

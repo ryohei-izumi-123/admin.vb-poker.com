@@ -1,0 +1,7 @@
+:host {
+  ::ng-deep .clr-vertical-nav {
+    display: flex;
+    min-height: calc(100vh - 6rem) !important;
+    height: 100%;
+  }
+}

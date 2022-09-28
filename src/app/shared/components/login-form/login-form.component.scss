@@ -1,0 +1,11 @@
+/* stylelint-disable */
+:host {
+  label.col-form-label {
+    text-align: left;
+  }
+
+  .login-wrapper {
+    background: url(/assets/img/login-bg5.jpg) no-repeat !important;
+    background-size: cover;
+  }
+}

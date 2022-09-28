@@ -1,0 +1,29 @@
+<clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="isCollapsed">
+  <ng-container *ngFor="let menu of menus">
+    <ng-container *ngIf="!hasChildren(menu); else $hasChildren">
+      <a clrVerticalNavLink [routerLink]="[menu?.path]" routerLinkActive="active" [attr.title]="getText(menu)"
+        *ngHasAcl="{ resource: menu?.path, action: 'read' }">
+        <clr-icon *ngIf="menu?.icon" clrVerticalNavIcon [attr.shape]="menu?.icon"></clr-icon>
+        {{getText(menu)}}
+      </a>
+    </ng-container>
+    <ng-template #$hasChildren>
+      <clr-vertical-nav-group *ngIf="hasChildren(menu)">
+        <a clrVerticalNavLink [attr.title]="getText(menu)">
+          <clr-icon *ngIf="menu?.icon" clrVerticalNavIcon [attr.shape]="menu?.icon"></clr-icon>
+          {{getText(menu)}}
+        </a>
+        <clr-vertical-nav-group-children *clrIfExpanded>
+          <ng-container *ngFor="let child of menu?.children">
+            <a clrVerticalNavLink [routerLink]="[menu?.path]" routerLinkActive="active" [attr.title]="getText(menu)"
+              *ngHasAcl="{ resource: menu?.path, action: 'read' }">
+              <clr-icon *ngIf="menu?.icon" clrVerticalNavIcon [attr.shape]="menu?.icon"></clr-icon>
+              {{getText(menu)}}
+            </a>
+          </ng-container>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+    </ng-template>
+  </ng-container>
+  <div class="nav-divider"></div>
+</clr-vertical-nav>

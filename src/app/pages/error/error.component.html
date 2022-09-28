@@ -1,0 +1,16 @@
+<section>
+    <div class="clr-row mt-20">
+        <div class="clr-col-12">
+            <h1>{{error?.status}}</h1>
+        </div>
+        <div class="clr-col-12">
+            <h2>{{'pages.error.index.title'|translate}}</h2>
+            <p class="p1">{{'pages.error.index.description'|translate}}</p>
+            <p class="mt-30">
+                <admin-button (click$)="back()" [options]="{ type: 'button', clazz: 'btn btn-outline' }">
+                    {{'common.back'|translate}}
+                </admin-button>
+            </p>
+        </div>
+    </div>
+</section>

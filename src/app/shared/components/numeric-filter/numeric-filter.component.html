@@ -1,0 +1,25 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-input-container>
+        <label class="clr-sr-only" for="numeric">{{label}}</label>
+        <input type="number" id="numeric" name="numeric" [placeholder]="placeholder" formControlName="numeric"
+            autocomplete="off" step="0.0001" min="10000" max="1000000000" clrInput />
+        <clr-control-helper>{{'validation.hint.number'|translate}}</clr-control-helper>
+        <clr-control-error *ngIf="hasError(getFormCtrl('numeric'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('numeric'))">
+                {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMin(getFormCtrl('numeric'))">
+                {{'validation.messages.min'|translate:{ min: getMinNumber(getFormCtrl('numeric')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMax(getFormCtrl('numeric'))">
+                {{'validation.messages.max'|translate:{ max: getMaxNumber(getFormCtrl('numeric')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorDecimal(getFormCtrl('numeric'))">
+                {{'validation.messages.isDecimal'|translate}}
+            </ng-container>
+        </clr-control-error>
+    </clr-input-container>
+    <admin-button #$submit (click$)="onSubmit()" [disabled]="hasFormError"
+        [options]="{ icon: { shape: 'check', size: 16 }, type: 'button', clazz: 'btn btn-sm btn-icon' }">
+    </admin-button>
+</form>

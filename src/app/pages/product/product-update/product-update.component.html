@@ -1,0 +1,149 @@
+<ng-container>
+  <admin-card-layout>
+    <ng-container role="header">
+      <ng-container [ngTemplateOutlet]="$header"></ng-container>
+    </ng-container>
+    <ng-container role="description">
+      <ng-container [ngTemplateOutlet]="$description"></ng-container>
+    </ng-container>
+    <ng-container role="title">
+      <ng-container [ngTemplateOutlet]="$title"></ng-container>
+    </ng-container>
+    <ng-container role="text">
+      <ng-container [ngTemplateOutlet]="$text"></ng-container>
+    </ng-container>
+    <ng-container role="footer">
+      <ng-container [ngTemplateOutlet]="$footer"></ng-container>
+    </ng-container>
+  </admin-card-layout>
+</ng-container>
+
+<ng-template #$header>
+  {{getPageText('header')}}
+</ng-template>
+
+<ng-template #$description>
+  <p class="p8">{{getPageText('description')}}</p>
+</ng-template>
+
+<ng-template #$title>
+  <p class="p2">{{getPageText('title')}}</p>
+</ng-template>
+
+<ng-template #$text>
+  <form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="clr-row">
+      <div class="clr-col-12" *ngIf="error">
+        <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+      </div>
+      <div class="clr-col-12">
+        <clr-select-container>
+          <label class="" for="categoryId">{{'common.categoryId'|translate}}</label>
+          <select [clrFocusOnViewInit]="true" clrSelect id="categoryId" name="categoryId" formControlName="categoryId"
+            [compareWith]="defaultCompareWith" required>
+            <option *ngIf="!hasRouteParamsId" [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let item of categories" [ngValue]="item?.id">{{item?.name}}</option>
+          </select>
+          <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('categoryId'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('categoryId'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('categoryId'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('categoryId')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('categoryId'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('categoryId')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('categoryId'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-select-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="name">{{'common.name'|translate}}</label>
+          <input type="text" id="name" name="name" [placeholder]="'placeholder.name'|translate" formControlName="name"
+            autocomplete="off" minlength="6" maxlength="64" clrInput required />
+          <clr-control-helper>{{'validation.hint.text'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('name'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('name'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('name'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('name')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('name'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('name')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('name'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="price">{{'common.price'|translate}}</label>
+          <input type="number" id="price" name="price" [placeholder]="'placeholder.price'|translate"
+            formControlName="price" autocomplete="off" step="0.0001" min="0.0001" max="1000000000" clrInput required />
+          <clr-control-helper>{{'validation.hint.number'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('price'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('price'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMin(getFormCtrl('price'))">
+              {{'validation.messages.min'|translate:{ min: getMinNumber(getFormCtrl('price')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMax(getFormCtrl('price'))">
+              {{'validation.messages.max'|translate:{ max: getMaxNumber(getFormCtrl('price')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorDecimal(getFormCtrl('price'))">
+              {{'validation.messages.isDecimal'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-textarea-container>
+          <label class="" for="remarks">{{'common.remarks'|translate}}</label>
+          <textarea type="text" id="remarks" name="remarks" [placeholder]="'placeholder.remarks'|translate"
+            formControlName="remarks" autocomplete="off" rows="5" cols="50" clrTextarea></textarea>
+          <clr-control-helper>{{'validation.hint.textarea'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('remarks'))">
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('remarks'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('remarks')) } }}
+            </ng-container>
+          </clr-control-error>
+        </clr-textarea-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-select-container>
+          <label class="" for="status">{{'common.status'|translate}}</label>
+          <select clrSelect id="status" name="status" formControlName="status" [compareWith]="defaultCompareWith"
+            required>
+            <option *ngIf="!hasRouteParamsId" [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let status of statuses" [ngValue]="status">{{status|status:'translate'}}
+            </option>
+          </select>
+          <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+          <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('status'))">
+              {{'validation.messages.required'|translate}}</ng-container>
+          </clr-control-error>
+        </clr-select-container>
+      </div>
+      <div class="clr-col-12">
+        <admin-button (click$)="onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-primary' }"
+          [disabled]="hasFormError">
+          {{'common.submit'|translate}}
+        </admin-button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #$footer>
+  <admin-back-button></admin-back-button>
+</ng-template>

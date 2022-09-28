@@ -1,0 +1,7 @@
+<span class="clock ml-10">
+  <admin-icon [options]="{ size: 16, shape: 'clock', clazz: 'is-solid' }"></admin-icon>
+  <span class="clock-inner">
+    <span class="time">{{time|moment:'HH:mm:ss'}}</span>
+    <em class="timezone" *ngIfMobile="'isDesktop'">{{timezone}}</em>
+  </span>
+</span>

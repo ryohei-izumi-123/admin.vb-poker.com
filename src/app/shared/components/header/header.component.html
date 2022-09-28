@@ -1,0 +1,64 @@
+<clr-header [ngClass]="headerStyle">
+  <div class="branding">
+    <a class="nav-link" [routerLink]="['/home']" joyrideStep="step4" [title]="'tour.step4.title'|translate"
+      [text]="'tour.step4.text'|translate">
+      <admin-icon [options]="{ size: 32, shape: 'logo' }"></admin-icon>
+      <span class="title">{{title}}</span>
+    </a>
+  </div>
+  <div class="header-nav" [clr-nav-level]="1" *ngIfMobile="'isMobile'">
+    <ng-container *ngFor="let menu of menus">
+      <a class="nav-link" [routerLink]="[menu?.path]" routerLinkActive="active" [attr.title]="getText(menu)"
+        *ngHasAcl="{ resource: menu?.path, action: 'read' }">
+        <span class="nav-text">
+          {{getText(menu)}}
+        </span>
+      </a>
+    </ng-container>
+  </div>
+  <div class="header-actions">
+    <admin-theme-selector *ngIfMobile="'isDesktop'" joyrideStep="step2" [title]="'tour.step2.title'|translate"
+      [text]="'tour.step2.text'|translate"></admin-theme-selector>
+    <div class="divider"></div>
+    <admin-locale-selector joyrideStep="step1" [prevTemplate]="$tourPrevButton" [nextTemplate]="$tourNextButton"
+      [doneTemplate]="$tourDoneButton" [counterTemplate]="$tourCounter" [title]="'tour.step1.title'|translate"
+      [text]="'tour.step1.text'|translate"></admin-locale-selector>
+    <div class="divider"></div>
+    <clr-dropdown>
+      <button class="nav-icon" clrDropdownTrigger joyrideStep="step3" [title]="'tour.step3.title'|translate"
+        [text]="'tour.step3.text'|translate">
+        <ng-container *ngIfAuth="let user">
+          <clr-icon [attr.shape]="user?.role|role:'icon'"></clr-icon>
+          <span class="nav-text">{{user?.username}}</span>
+          <clr-icon shape="caret down"></clr-icon>
+        </ng-container>
+      </button>
+      <clr-dropdown-menu *clrIfOpen [clrPosition]="'bottom-right'">
+        <button [routerLink]="['/account']" clrDropdownItem
+          *ngHasAcl="{ resource: 'account', action: 'read' }">{{'menu.account'|translate}}</button>
+        <button [routerLink]="['/logout']" clrDropdownItem>{{'menu.logout'|translate}}</button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</clr-header>
+
+<ng-container>
+  <ng-template #$tourPrevButton>
+    <admin-button [options]="{ type: 'button', clazz: 'btn btn-sm btn-outline' }">
+      {{'common.previous'|translate}}
+    </admin-button>
+  </ng-template>
+  <ng-template #$tourNextButton>
+    <admin-button [options]="{ type: 'button', clazz: 'btn btn-sm btn-info' }">
+      {{'common.next'|translate}}
+    </admin-button>
+  </ng-template>
+  <ng-template #$tourDoneButton>
+    <admin-button [options]="{ type: 'button', clazz: 'btn btn-sm btn-success-outline' }">
+      {{'common.ok'|translate}}
+    </admin-button>
+  </ng-template>
+  <ng-template #$tourCounter let-step="step" let-total="total">
+    {{ step }}/{{ total }} {{'common.steps'|translate}}
+  </ng-template>
+</ng-container>

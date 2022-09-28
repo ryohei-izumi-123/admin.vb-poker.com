@@ -1,0 +1,22 @@
+/* stylelint-disable */
+@charset "UTF-8";
+@import "~typeface-roboto/index.css";
+@import "~animate.css/animate.css";
+@import "~jsoneditor/dist/jsoneditor.min.css";
+
+// if you wanna use tailwindcss, please comment out
+// @import "~tailwindcss/base";
+// @import "~tailwindcss/components";
+// @import "~tailwindcss/utilities";
+
+@import "scss/utils/reset";
+@import "scss/utils/variable";
+@import "scss/utils/mixins";
+@import "scss/utils/helper";
+@import "scss/global";
+@import "scss/joyride";
+@import "scss/ckeditor";
+@import "scss/preloader";
+@import "scss/datagrid";
+@import "scss/theme";
+@import "scss/sentry";

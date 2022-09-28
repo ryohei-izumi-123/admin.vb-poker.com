@@ -1,0 +1,75 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+/**
+// 個別のコンポーネント側でカラムの幅を調整したりする場合は、 `:host ::ng-deep .dg-xxx` のように書いてやればよい。
+:host {
+  ::ng-deep {
+    .dg-column-name,
+    .dg-column-img,
+    .dg-column-status,
+    .dg-column-action {
+      min-width: 6rem;
+    }
+
+    .dg-cell-img,
+    .dg-cell-status {
+      text-align: center;
+    }
+
+    .dg-cell-action {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+**/
+
+@include exportsAs("datagrid") {
+  :root {
+    .datagrid-host {
+      min-height: 20rem;
+      transition: min-height 200ms ease-in-out;
+      &.datagrid-expanded {
+        min-height: 32.5rem;
+      }
+
+      .datagrid-table {
+        .datagrid-cell {
+          &.dg-cell-text-left {
+            text-align: left !important;
+          }
+          &.dg-cell-text-center {
+            text-align: center !important;
+          }
+          &.dg-cell-text-right {
+            text-align: right !important;
+          }
+
+          &.dg-cell-status {
+            text-align: center;
+          }
+
+          &.dg-cell-action {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+          }
+        }
+
+        .datagrid-column {
+          &.dg-column-id,
+          &.dg-column-status,
+          &.dg-column-action {
+            min-width: 6rem;
+          }
+
+          .datagrid-filter-toggle {
+            // ビルトインフィルターを隠す場合は下記コメントを外す。
+            // display: none;
+          }
+        }
+      }
+    }
+  }
+}

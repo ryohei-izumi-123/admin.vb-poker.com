@@ -1,0 +1,13 @@
+<ng-container *ngIf="options?.length">
+  <ng-container *ngFor="let option of options">
+    <admin-alert [options]="option">
+      <ng-container role="text">
+        <ng-container [ngTemplateOutlet]="option?.templates?.text||$emptyTpl"></ng-container>
+      </ng-container>
+      <ng-container role="actions">
+        <ng-container [ngTemplateOutlet]="item?.templates?.actions||$emptyTpl"></ng-container>
+      </ng-container>
+    </admin-alert>
+  </ng-container>
+</ng-container>
+<ng-template #$emptyTpl></ng-template>

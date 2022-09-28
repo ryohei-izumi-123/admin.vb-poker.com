@@ -1,0 +1,8 @@
+<ng-container *ngIf="isOnline$|async">
+  <form autocomplete="off" [formGroup]="form" novalidate>
+    <ngx-invisible-recaptcha #$recaptcha [siteKey]="siteKey" (reset)="handleReset()" (ready)="handleReady()"
+      (load)="handleLoad()" (success)="handleSuccess($event)" (expire)="handleExpire()" (error)="handleError()"
+      [useGlobalDomain]="false" type="image" badge="inline" formControlName="recaptcha">
+    </ngx-invisible-recaptcha>
+  </form>
+</ng-container>

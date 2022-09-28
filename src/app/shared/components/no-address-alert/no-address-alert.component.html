@@ -1,0 +1,12 @@
+<ng-container *ngIf="visible">
+    <admin-alert [options]="options" #$alert>
+        <ng-container role="text">
+            <ng-container>{{'pages.setting.index.content.4'|translate}}</ng-container>
+        </ng-container>
+        <ng-container role="actions">
+            <admin-button (click$)="close()" [options]="{ type: 'button', clazz: 'btn alert-action' }">
+                {{'common.setting'|translate}}
+            </admin-button>
+        </ng-container>
+    </admin-alert>
+</ng-container>

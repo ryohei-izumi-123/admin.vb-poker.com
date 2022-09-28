@@ -1,0 +1,253 @@
+<admin-modal #$modal>
+  <ng-container role="modal-title">
+    <ng-container *ngIf="modalState === 'status'">
+      {{getPageText('content.1')}}
+    </ng-container>
+    <ng-container *ngIf="modalState === 'password'">
+      {{getPageText('content.2')}}
+    </ng-container>
+  </ng-container>
+  <ng-container role="modal-body">
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <ng-container *ngIf="modalState === 'status'">
+          <p class="p3">{{getPageText('content.3')}}</p>
+        </ng-container>
+        <ng-container *ngIf="modalState === 'password'">
+          <p class="p3">{{getPageText('content.4')}}</p>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="selected">
+      <ng-container *ngIf="modalState === 'status'">
+        <admin-user-status [row]="selected" #$statusForm (afterUpdated$)="closeModal()"></admin-user-status>
+      </ng-container>
+      <ng-container *ngIf="modalState === 'password'">
+        <admin-user-password [row]="selected" #$passwordForm (afterUpdated$)="closeModal()"></admin-user-password>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container role="modal-footer">
+    <admin-button (click$)="closeModal()" [options]="{ type: 'button', clazz: 'btn btn-outline' }">
+      {{'common.cancel'|translate}}
+    </admin-button>
+    <ng-container *ngIf="modalState === 'status'">
+      <admin-button (click$)="$statusForm?.onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-primary' }"
+        [disabled]="$statusForm?.hasFormError">
+        {{'common.submit'|translate}}
+      </admin-button>
+    </ng-container>
+    <ng-container *ngIf="modalState === 'password'">
+      <admin-button (click$)="$passwordForm?.onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-primary' }"
+        [disabled]="$passwordForm?.hasFormError">
+        {{'common.submit'|translate}}
+      </admin-button>
+    </ng-container>
+  </ng-container>
+</admin-modal>
+
+<ng-container>
+  <admin-card-layout>
+    <ng-container role="header">
+      <ng-container [ngTemplateOutlet]="$header"></ng-container>
+    </ng-container>
+    <ng-container role="description">
+      <ng-container [ngTemplateOutlet]="$description"></ng-container>
+    </ng-container>
+    <ng-container role="title">
+      <ng-container [ngTemplateOutlet]="$title"></ng-container>
+    </ng-container>
+    <ng-container role="text">
+      <ng-container [ngTemplateOutlet]="$text"></ng-container>
+    </ng-container>
+    <ng-container role="footer">
+      <ng-container [ngTemplateOutlet]="$footer"></ng-container>
+    </ng-container>
+  </admin-card-layout>
+</ng-container>
+
+<ng-template #$header>
+  {{getPageText('header')}}
+</ng-template>
+
+<ng-template #$description>
+  <p class="p8">{{getPageText('description')}}</p>
+</ng-template>
+
+<ng-template #$title>
+  <p class="p2">{{getPageText('title')}}</p>
+  <p>
+    <admin-button (click$)="createNew()" *ngHasAcl="{ resource: pageName, action: 'create' }"
+      [options]=" { icon: { shape: 'plus' , size: 16 } ,type: 'button' , clazz: 'btn btn-sm btn-primary' }">
+      {{'common.create'|translate}}
+    </admin-button>
+  </p>
+</ng-template>
+
+<ng-template #$text>
+  <hr />
+  <clr-datagrid (clrDgRefresh)="onRefresh($event)" [clrDgLoading]="isBusy" #$datagrid>
+    <clr-dg-action-bar>
+      <admin-datagrid-form (afterSubmit$)="onSearch($event)">
+      </admin-datagrid-form>
+    </clr-dg-action-bar>
+    <clr-dg-column [clrDgField]="'id'" [clrDgSortBy]="'id'" class="dg-column-id">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.id'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'role'" [clrDgSortBy]="'role'" class="dg-column-role">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.role'|translate}}
+      </ng-container>
+      <clr-dg-filter [clrDgFilter]="$roleFilter">
+        <admin-role-filter #$roleFilter></admin-role-filter>
+      </clr-dg-filter>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'username'" [clrDgSortBy]="'username'" class="dg-column-username">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.username'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'firstName'" [clrDgSortBy]="'firstName'" class="dg-column-firstName">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.firstName'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastName'" [clrDgSortBy]="'lastName'" class="dg-column-lastName">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.lastName'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'email'" [clrDgSortBy]="'email'" class="dg-column-email">
+      <ng-container *clrDgHideableColumn="{ hidden: true }">
+        {{'common.email'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'phone'" [clrDgSortBy]="'phone'" class="dg-column-phone">
+      <ng-container *clrDgHideableColumn="{ hidden: true }">
+        {{'common.phone'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'status'" [clrDgSortBy]="'status'" class="dg-column-status">
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        {{'common.status'|translate}}
+      </ng-container>
+      <clr-dg-filter [clrDgFilter]="$statusFilter">
+        <admin-status-filter #$statusFilter></admin-status-filter>
+      </clr-dg-filter>
+    </clr-dg-column>
+    <clr-dg-column class="dg-column-action">
+      <ng-container>
+        {{'common.action'|translate}}
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-row *ngFor="let row of rows; index as idx; trackBy: trackById" [clrDgItem]="row">
+      <clr-dg-cell class="dg-cell-id">
+        {{row?.id}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-role">
+        <span [class]="row?.role|role:'label'">
+          <admin-icon [options]="{ size: 12, shape: row?.role|role:'icon' }"></admin-icon>
+          {{row?.role|role:'translate'}}
+        </span>
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-username">
+        {{row?.username}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-firstName">
+        {{row?.firstName}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-lastName">
+        {{row?.lastName}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-email">
+        {{row?.email}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-phone">
+        ({{row?.country?.name}}) {{row?.phone}}
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-status">
+        <ng-container *ngHasAcl="{ resource: pageName, action: 'update' }; else $cannotUpdate">
+          <span class="cursor-pointer" [class]="row?.status|status:'label'" (click)="openModal(row, 'status')">
+            <admin-icon [options]="{ size: 12, shape: row?.status|status:'icon' }"></admin-icon>
+            {{row?.status|status:'translate'}}
+          </span>
+        </ng-container>
+        <ng-template #$cannotUpdate>
+          <span class="cursor-default" [class]="row?.status|status:'label'">
+            <admin-icon [options]="{ size: 12, shape: row?.status|status:'icon' }"></admin-icon>
+            {{row?.status|status:'translate'}}
+          </span>
+        </ng-template>
+      </clr-dg-cell>
+      <clr-dg-cell class="dg-cell-action">
+        <admin-tooltip-icon *ngHasAcl="{ resource: pageName, action: 'read' }" [options]="getIconOptions('details')"
+          (click$)="viewDetail(row)">
+          <span>{{'common.detail'|translate}}</span>
+        </admin-tooltip-icon>
+        <admin-tooltip-icon *ngHasAcl="{ resource: pageName, action: 'update' }" [options]="getIconOptions('note')"
+          (click$)="updateRow(row)">
+          <span>{{'common.update'|translate}}</span>
+        </admin-tooltip-icon>
+        <admin-tooltip-icon *ngHasAcl="{ resource: pageName, action: 'delete' }" [options]="getIconOptions('trash')"
+          (click$)="deleteRow(row)">
+          <span>{{'common.delete'|translate}}</span>
+        </admin-tooltip-icon>
+        <admin-tooltip-icon *ngHasAcl="{ resource: pageName, action: 'update' }" [options]="getIconOptions('key')"
+          (click$)="openModal(row, 'password')">
+          <span>{{'common.changePassword'|translate}}</span>
+        </admin-tooltip-icon>
+      </clr-dg-cell>
+      <clr-dg-action-overflow>
+        <admin-button *ngHasAcl="{ resource: pageName, action: 'read' }" (click$)="viewDetail(row)"
+          [options]="{ type: 'button', clazz: 'action-item' }">
+          {{'common.detail'|translate}}
+        </admin-button>
+        <admin-button *ngHasAcl="{ resource: pageName, action: 'update' }" (click$)="updateRow(row)"
+          [options]="{ type: 'button', clazz: 'action-item' }">
+          {{'common.update'|translate}}
+        </admin-button>
+        <admin-button *ngHasAcl="{ resource: pageName, action: 'delete' }" (click$)="deleteRow(row)"
+          [options]="{ type: 'button', clazz: 'action-item' }">
+          {{'common.delete'|translate}}
+        </admin-button>
+      </clr-dg-action-overflow>
+    </clr-dg-row>
+    <clr-dg-placeholder>{{'common.noData'|translate}}</clr-dg-placeholder>
+    <ng-template [(clrIfDetail)]="selected" let-row>
+      <clr-dg-detail>
+        <clr-dg-detail-header>{{'common.detail'|translate}}</clr-dg-detail-header>
+        <clr-dg-detail-body>
+          <admin-user-detail [row]="selected"></admin-user-detail>
+        </clr-dg-detail-body>
+      </clr-dg-detail>
+    </ng-template>
+    <clr-dg-footer>
+      <clr-dg-column-toggle>
+        <clr-dg-column-toggle-title>{{'common.toggleColumn'|translate}}</clr-dg-column-toggle-title>
+        <clr-dg-column-toggle-button>{{'common.selectAll'|translate}}</clr-dg-column-toggle-button>
+      </clr-dg-column-toggle>
+      <clr-dg-pagination #$pagination (clrDgPageChange)="onChangePage($event)" [(clrDgPage)]="metadata.page"
+        [clrDgPageSize]="metadata?.limit" [clrDgTotalItems]="metadata?.total" [clrDgLastPage]="metadata?.pages">
+        <clr-dg-page-size [clrPageSizeOptions]="options?.pageSizeOptions">
+          {{metadata?.limit}} {{'common.rows'|translate}} : {{'common.perPage'|translate}}
+        </clr-dg-page-size>
+        <ng-container>
+          {{$pagination?.firstItem + 1}} - {{$pagination?.lastItem + 1}} / {{$pagination?.totalItems}}
+          {{'common.rows'|translate}}
+        </ng-container>
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</ng-template>
+
+<ng-template #$footer>
+  <admin-button *ngIf="options?.hasExport" (click$)="exportAsCsv()" [disabled]="!!!(hasRows)"
+    [options]="{ icon: { shape: 'export', size: 16 }, type: 'button', clazz: 'btn btn-sm' }">
+    {{'common.exportAsCsv'|translate}}
+  </admin-button>
+  <admin-button (click$)="reload()" [disabled]="isBusy"
+    [options]="{ icon: { shape: 'refresh', size: 16 }, type: 'button', clazz: 'btn btn-sm btn-icon float-right' }">
+  </admin-button>
+</ng-template>

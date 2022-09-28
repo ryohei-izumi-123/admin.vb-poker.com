@@ -1,0 +1,12 @@
+<nav class="subnav" [clr-nav-level]="2">
+  <ul class="nav">
+    <ng-container *ngFor="let menu of menus">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[menu?.path]" routerLinkActive="active" [attr.title]="getText(menu)"
+          *ngHasAcl="{ resource: menu?.path, action: 'read' }">
+          {{getText(menu)}}
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

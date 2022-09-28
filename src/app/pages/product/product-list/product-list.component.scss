@@ -1,0 +1,9 @@
+:host {
+  ::ng-deep {
+    .dg-column-categoryId,
+    .dg-column-name,
+    .dg-column-price {
+      min-width: 6rem;
+    }
+  }
+}

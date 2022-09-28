@@ -1,0 +1,19 @@
+:host {
+  label[for="query"] {
+    flex: 0 0 1rem !important;
+    max-width: 1rem !important;
+  }
+
+  input[type="search"] {
+    width: 8rem;
+  }
+
+  input[type="date"],
+  input[name="date"] {
+    width: 8rem;
+  }
+
+  input[type="time"] {
+    width: 8rem;
+  }
+}

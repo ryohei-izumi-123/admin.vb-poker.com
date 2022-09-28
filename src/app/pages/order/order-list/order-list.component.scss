@@ -1,0 +1,14 @@
+:host {
+  ::ng-deep {
+    &.dg-column-id,
+    &.dg-column-status,
+    &.dg-column-action {
+      min-width: 6rem;
+    }
+
+    .dg-column-name,
+    .dg-column-txPrice {
+      min-width: 6rem;
+    }
+  }
+}

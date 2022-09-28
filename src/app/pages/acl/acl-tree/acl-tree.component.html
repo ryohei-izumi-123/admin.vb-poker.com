@@ -1,0 +1,92 @@
+<admin-modal #$modal>
+    <ng-container role="modal-title">
+        <admin-icon [options]="{ size: 16, shape: 'warning-standard', clazz: 'is-warning' }"></admin-icon>
+        {{'common.confirm'|translate}}
+    </ng-container>
+    <ng-container role="modal-body">
+        <p class="error active" [innerHTML]="error?.message|nl2br" *ngIf="error"></p>
+        <p class="p3">{{getPageText('content.1')}}</p>
+    </ng-container>
+    <ng-container role="modal-footer">
+        <admin-button (click$)="$modal?.close()" [options]="{ type: 'button', clazz: 'btn btn-outline' }">
+            {{'common.cancel'|translate}}
+        </admin-button>
+        <admin-button (click$)="onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-primary' }"
+            [disabled]="hasFormError">
+            {{'common.confirm'|translate}}
+        </admin-button>
+    </ng-container>
+</admin-modal>
+
+<ng-container>
+    <admin-card-layout>
+        <ng-container role="header">
+            <ng-container [ngTemplateOutlet]="$header"></ng-container>
+        </ng-container>
+        <ng-container role="description">
+            <ng-container [ngTemplateOutlet]="$description"></ng-container>
+        </ng-container>
+        <ng-container role="title">
+            <ng-container [ngTemplateOutlet]="$title"></ng-container>
+        </ng-container>
+        <ng-container role="text">
+            <ng-container [ngTemplateOutlet]="$text"></ng-container>
+        </ng-container>
+        <ng-container role="footer">
+            <ng-container [ngTemplateOutlet]="$footer"></ng-container>
+        </ng-container>
+    </admin-card-layout>
+</ng-container>
+
+<ng-template #$header>
+    {{getPageText('header', 'index')}}
+</ng-template>
+
+<ng-template #$description>
+    <p class="p8">{{getPageText('description', 'index')}}</p>
+</ng-template>
+
+<ng-template #$title>
+    <p class="p2">{{getPageText('title', 'index')}}</p>
+</ng-template>
+
+<ng-template #$text>
+    <div class="clr-row">
+        <div class="clr-col-12" *ngIf="error">
+            <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+        </div>
+        <div class="clr-col-12 scroll mt-20">
+            <clr-tree>
+                <clr-tree-node *ngFor="let node of nodes" [clrExpanded]="true"
+                    [ngClass]="notAllowedWhenAdministrator(node)">
+                    <span [class]="node?.role|role:'label'" [ngClass]="notAllowedWhenAdministrator(node)">
+                        <admin-icon [options]="{ size: 12, shape: node?.role|role:'icon' }"></admin-icon>
+                        {{node?.role|role:'translate'}}
+                    </span>
+                    <clr-tree-node *ngFor="let permission of node?.permissions" [clrExpanded]="true"
+                        [ngClass]="notAllowedWhenAdministrator(node)">
+                        {{'menu.'+permission?.resource|translate}}
+                        <clr-tree-node *ngFor="let crud of permission?.crud" [clrSelected]="crud?.value"
+                            (clrSelectedChange)="crud.value = !!$event" [ngClass]="notAllowedWhenAdministrator(node)">
+                            {{'common.' + crud?.action|translate}}
+                        </clr-tree-node>
+                    </clr-tree-node>
+                </clr-tree-node>
+            </clr-tree>
+        </div>
+        <div class="clr-col-12 mt-20">
+            <form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+                <admin-button #$submit [options]="{ type: 'button', clazz: 'btn btn-primary btn-block' }"
+                    [disabled]="hasFormError" (click$)="$modal?.open()">
+                    {{'common.submit'|translate}}
+                </admin-button>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #$footer>
+    <admin-link [options]="{ clazz: 'btn btn-sm', link: ['/home'] }">
+        {{'common.backToHome'|translate}}
+    </admin-link>
+</ng-template>

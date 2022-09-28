@@ -1,0 +1,74 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+@include exportsAs("preloader") {
+  .splash-screen {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1rem 0 0 -1rem;
+    width: 2rem;
+    height: 2rem;
+    border: 0.25rem solid $app-brand-blue;
+    animation: splash-screen 2s infinite ease;
+  }
+
+  .splash-screen-inner {
+    display: inline-block;
+    width: 100%;
+    background-color: $app-brand-blue;
+    vertical-align: top;
+    animation: splash-screen-inner 2s infinite ease-in;
+  }
+
+  .splash-screen-inner img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
+
+  @keyframes splash-screen {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      transform: rotate(180deg);
+    }
+
+    50% {
+      transform: rotate(180deg);
+    }
+
+    75% {
+      transform: rotate(360deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes splash-screen-inner {
+    0% {
+      height: 0%;
+    }
+
+    25% {
+      height: 0%;
+    }
+
+    50% {
+      height: 100%;
+    }
+
+    75% {
+      height: 100%;
+    }
+
+    100% {
+      height: 0%;
+    }
+  }
+}

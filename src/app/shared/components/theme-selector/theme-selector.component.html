@@ -1,0 +1,10 @@
+<clr-toggle-container>
+    <label class="clr-sr-only"></label>
+    <clr-toggle-wrapper>
+        <input type="checkbox" clrToggle name="theme" [(ngModel)]="value" (ngModelChange)="onChange($event)" />
+        <label>
+            <admin-icon [options]="{ size: 16, shape: icon, clazz: 'is-solid' }"></admin-icon>
+        </label>
+    </clr-toggle-wrapper>
+    <clr-control-error></clr-control-error>
+</clr-toggle-container>

@@ -1,0 +1,32 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-select-container>
+        <label class="clr-sr-only" for="option">{{label}}</label>
+        <select clrSelect id="option" name="option" formControlName="option" [compareWith]="defaultCompareWith">
+            <option [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let item of options" [ngValue]="item">
+                {{item?.name}}
+            </option>
+        </select>
+        <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+        <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('option'))">
+                {{'validation.messages.required'|translate}}</ng-container>
+        </clr-control-error>
+    </clr-select-container>
+    <clr-combobox-container *ngIf="false">
+        <label class="clr-sr-only" for="option">{{label}}</label>
+        <clr-combobox id="option" name="option" formControlName="option" [compareWith]="defaultCompareWith">
+            <clr-options>
+                <clr-option clrValue="null">{{'common.pleaseSelect'|translate}}</clr-option>
+                <clr-option *ngFor="let item of options" [clrValue]="item">
+                    {{item?.name}}
+                </clr-option>
+            </clr-options>
+        </clr-combobox>
+        <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+        <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('option'))">
+                {{'validation.messages.required'|translate}}</ng-container>
+        </clr-control-error>
+    </clr-combobox-container>
+</form>

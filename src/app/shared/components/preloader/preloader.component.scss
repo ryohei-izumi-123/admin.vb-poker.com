@@ -1,0 +1,7 @@
+@import "utils/mixins";
+
+:host {
+  .preloader {
+    @include make-flex-fullscreen();
+  }
+}

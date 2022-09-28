@@ -1,0 +1,19 @@
+<admin-alert [options]="{ level: type }">
+    <ng-container role="text">
+        <ng-container *ngIf="title">
+            <span [attr.class]="options?.titleClass" [attr.aria-label]="title">
+                {{ title }}
+                <ng-container *ngIf="duplicatesCount">[{{ duplicatesCount + 1 }}]</ng-container>
+            </span>
+        </ng-container>
+        <ng-container *ngIf="message">
+            <ng-container *ngIf="options?.enableHtml; else $noHtml">
+                <span [class]="options?.messageClass" [innerHTML]="message"></span>
+            </ng-container>
+            <ng-template #$noHtml>
+                <span [class]="options?.messageClass">{{ message }}</span>
+            </ng-template>
+        </ng-container>
+    </ng-container>
+    <ng-container role="actions"></ng-container>
+</admin-alert>

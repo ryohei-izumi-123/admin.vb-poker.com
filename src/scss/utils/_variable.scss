@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+
+$app-vars: (
+  app-brand-yellow: hsl(41, 100%, 47%),
+  app-brand-blue: hsl(202, 82%, 42%),
+  app-light-border-color: hsl(0, 0%, 87%),
+  app-dark-border-color: hsl(203, 31%, 8%),
+  app-base-font-size: 1rem,
+  app-absolute-zero: 0,
+  app-absolute-position: -99999,
+  app-mobile-width: 320px,
+  app-tablet-width: 768px,
+  app-desktop-width: 1024px,
+  app-media-max-width: 1260px,
+  app-media-bp1-width: 960px,
+  app-media-min-width: 480px,
+);
+
+@function app-vars-get($key) {
+  @return #{map-get($app-vars, $key)};
+}
+
+$app-brand-yellow: app-vars-get(app-brand-yellow);
+$app-brand-blue: app-vars-get(app-brand-blue);
+$app-light-border-color: app-vars-get(app-light-border-color);
+$app-dark-border-color: app-vars-get(app-dark-border-color);
+$app-base-font-size: app-vars-get(app-base-font-size);
+$app-absolute-zero: app-vars-get(app-absolute-zero);
+$app-absolute-position: app-vars-get(app-absolute-position);
+$app-mobile-width: app-vars-get(app-mobile-width);
+$app-tablet-width: app-vars-get(app-tablet-width);
+$app-desktop-width: app-vars-get(app-desktop-width);
+$app-media-max-width: app-vars-get(app-media-max-width);
+$app-media-bp1-width: app-vars-get(app-media-bp1-width);
+$app-media-min-width: app-vars-get(app-media-min-width);
+
+:root {
+  $css-var-prefix: "--";
+  @each $k, $v in $app-vars {
+    #{$css-var-prefix}#{$k}: #{app-vars-get($k)};
+  }
+}

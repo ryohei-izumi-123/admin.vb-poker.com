@@ -1,0 +1,21 @@
+/* stylelint-disable */
+:host {
+  span.clock {
+    display: inline-block;
+
+    > span.clock-inner {
+      display: inline-block;
+
+      > span.time,
+      > em.timezone {
+        display: inline-block;
+        font-size: x-small;
+      }
+
+      > span.time {
+        width: 3rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

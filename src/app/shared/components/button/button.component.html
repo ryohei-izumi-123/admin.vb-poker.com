@@ -1,0 +1,5 @@
+<button [clrLoading]="loading" [attr.type]="options?.type" [ngClass]="options?.clazz" [disabled]="disabled"
+  (click)="onClick($event)">
+  <clr-icon *ngIf="options?.icon?.shape" [attr.shape]="options?.icon?.shape"></clr-icon>
+  <ng-content></ng-content>
+</button>

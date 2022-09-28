@@ -1,0 +1,36 @@
+<div class="loader" *ngIf="isBusy">
+    <clr-spinner [clrSmall]="false" [clrInline]="false">
+        {{'common.loading'|translate}}
+    </clr-spinner>
+</div>
+<form clrForm [ngClass]="{ 'totp-form-xl': param !== null }" autocomplete="off" [formGroup]="form"
+    (ngSubmit)="onSubmit()" novalidate>
+    <div class="clr-row">
+        <div class="clr-col-12" *ngIf="error">
+            <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+        </div>
+        <div class="clr-col-12">
+            <clr-input-container>
+                <label [ngClass]="{ 'clr-sr-only': param !== null }" for="token">{{'common.token'|translate}}</label>
+                <input type="text" [clrFocusOnViewInit]="true" id="token" name="token"
+                    [placeholder]="'placeholder.token'|translate" formControlName="token" #$token autocomplete="off"
+                    minlength="6" maxlength="6" clrInput required ngOnlyNumber />
+                <clr-control-helper *ngIf="false">{{'validation.hint.token'|translate}}</clr-control-helper>
+                <clr-control-error *ngIf="hasError(getFormCtrl('token'))">
+                    <ng-container *ngIf="hasErrorRequired(getFormCtrl('token'))">
+                        {{'validation.messages.required'|translate}}
+                    </ng-container>
+                    <ng-container *ngIf="hasErrorMinlength(getFormCtrl('token'))">
+                        {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('token')) } }}
+                    </ng-container>
+                    <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('token'))">
+                        {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('token')) } }}
+                    </ng-container>
+                    <ng-container *ngIf="hasErrorNumber(getFormCtrl('token'))">
+                        {{'validation.messages.isNumber'|translate}}
+                    </ng-container>
+                </clr-control-error>
+            </clr-input-container>
+        </div>
+    </div>
+</form>

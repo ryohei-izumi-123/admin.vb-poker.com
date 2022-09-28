@@ -1,0 +1,73 @@
+/* stylelint-disable */
+$form-height: 7.5rem;
+$font-size: 2.5rem;
+$input-height: 4rem;
+$icon-size: calc(#{$input-height} / 2);
+$border-color: var(--clr-forms-border-color);
+$border-radius: calc(var(--clr-global-borderradius) * 1.6666);
+$text-top: 3.2rem;
+
+:host {
+  .loader {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    opacity: 0.9;
+  }
+
+  input {
+    border: 1px solid $border-color;
+  }
+
+  ::ng-deep .clr-control-container {
+    &.clr-error {
+      input {
+        border: 1px solid var(--clr-forms-invalid-color) !important;
+      }
+    }
+  }
+
+  form.totp-form-xl {
+    height: $form-height;
+
+    input {
+      font-size: $font-size;
+      height: $input-height !important;
+      max-height: $input-height !important;
+      display: inline-block !important;
+      border-radius: $border-radius;
+    }
+
+    ::ng-deep .clr-validate-icon {
+      height: $icon-size;
+      width: $icon-size;
+      margin-bottom: calc(#{$icon-size} / 2);
+    }
+
+    .clr-input-wrapper {
+      max-height: $input-height !important;
+    }
+
+    .clr-input,
+    .clr-input-wrapper {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .clr-control-container,
+    .clr-input-wrapper.clr-input {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .clr-subtext {
+      margin-top: $text-top !important;
+    }
+  }
+}

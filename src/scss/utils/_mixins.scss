@@ -1,0 +1,250 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+// this mixin is similar to clr core mixin with same name. so name should be like `exportsAs`
+$app-imported-modules: () !default;
+@mixin exportsAs($name) {
+  //check if they have been imported
+  @if (index($app-imported-modules, $name) == null) {
+    $app-imported-modules: append($app-imported-modules, $name) !global;
+    @content;
+  }
+}
+
+@function variablize-str($str: null) {
+  @if $str != null {
+    @return #{"--" + $str};
+  }
+}
+
+/**
+@include css-vars(
+  border-bottom-color,
+  forms-invalid-color,
+  $forms-invalid-color,
+  true,
+  true
+);
+**/
+@mixin css-vars(
+  $style: null,
+  $var: null,
+  $fallback: "",
+  $do-custom-prop: true,
+  $do-override: true
+) {
+  @if $style != null and $var != null {
+    /* #{$var} */
+    #{$style}: $fallback;
+    @if $do-custom-prop == true {
+      @if $do-override == true {
+        #{$style}: var(variablize-str($var), $fallback) !important;
+      } @else {
+        #{$style}: var(variablize-str($var), $fallback);
+      }
+    }
+  }
+}
+
+@mixin jp-font($font_size: $app-base-font-size) {
+  font-family: "ＭＳ Ｐゴシック", "MS PGothic", sans-serif !important;
+  font-size: $font_size;
+}
+
+@mixin move(
+  $name: name,
+  $speed: 600ms,
+  $iteration: -1,
+  $delay: 0,
+  $fill: both,
+  $direction: alternate
+) {
+  animation-name: $name;
+  animation-duration: $speed;
+  @if $iteration==-1 {
+    animation-iteration-count: infinite;
+  } @else {
+    animation-iteration-count: $iteration;
+  }
+  animation-fill-mode: $fill;
+  animation-direction: $direction;
+  animation-delay: $delay;
+}
+
+@mixin action($action-name: newAction) {
+  @-webkit-keyframes #{$action-name} {
+    @content;
+  }
+  @keyframes #{$action-name} {
+    @content;
+  }
+  .#{$action-name} {
+    animation-name: $action-name;
+  }
+}
+
+@mixin animate($action-name: action) {
+  @include action($action-name) {
+    @content;
+  }
+}
+
+@function em($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1em;
+}
+
+@mixin clear {
+  clear: both;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin hide-text {
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+@mixin pure {
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+@mixin selection {
+  &::selection {
+    @content;
+  }
+  &::-moz-selection {
+    @content;
+  }
+}
+
+@mixin retina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+@mixin orientation($portrait: true) {
+  @media screen and (orientation: #{ if($portrait, portrait, landscape) }) {
+    @content;
+  }
+}
+
+@function translate-media-condition($c) {
+  $condition: (
+    "screen": "only screen",
+    "print": "only print",
+    "retina":
+      "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)",
+    ">maxWidth": "(min-width: #{$app-media-max-width + 1})",
+    "<maxWidth": "(max-width: #{$app-media-max-width})",
+    ">bp1Width": "(min-width: #{$app-media-bp1-width + 1})",
+    "<bp1Width": "(max-width: #{$app-media-bp1-width})",
+    ">minWidth": "(min-width: #{$app-media-min-width + 1})",
+    "<minWidth": "(max-width: #{$app-media-min-width})",
+  );
+  @return map-get($condition, $c);
+}
+
+@mixin media($args...) {
+  $query: "";
+  @each $arg in $args {
+    $op: "";
+    @if ($query != "") {
+      $op: " and ";
+    }
+    $query: $query + $op + translate-media-condition($arg);
+  }
+  @media #{$query} {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$app-mobile-width}) and (max-width: #{$app-tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$app-tablet-width}) and (max-width: #{$app-desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$app-desktop-width}) {
+    @content;
+  }
+}
+
+@supports (position: sticky) {
+  .sticky-nav {
+    position: sticky;
+  }
+}
+
+@supports not (position: sticky) {
+  .sticky-nav {
+    position: fixed;
+  }
+}
+
+@mixin get-login-wrapper(
+  $img: "/assets/img/login-bg5.jpg",
+  $filter: sepia(60%)
+) {
+  background: none !important;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(#{$img}) no-repeat !important;
+    background-size: cover !important;
+    background-position: 25.2rem 0 !important;
+    filter: $filter;
+  }
+}
+
+@function hslac($color, $alpha: 1) {
+  $color-type: type-of($color);
+  @if ($color-type == "color") {
+    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+  } @else {
+    @debug $color-type;
+    @warn "color: #{$color} type: #{$color-type}";
+    // @error "color: #{$color} is not color object";
+    @return $color;
+  }
+}
+
+@mixin make-flex-fullscreen($background: transparent, $z-index: 99999) {
+  background: $background !important;
+  z-index: $z-index !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}

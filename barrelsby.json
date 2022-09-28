@@ -1,0 +1,12 @@
+{
+  "delete": true,
+  "location": "top",
+  "name": "index",
+  "structure": "flat",
+  "local": false,
+  "include": [".ts$"],
+  "exclude": [".spec.ts$"],
+  "singleQuotes": true,
+  "noSemicolon": false,
+  "verbose": true
+}

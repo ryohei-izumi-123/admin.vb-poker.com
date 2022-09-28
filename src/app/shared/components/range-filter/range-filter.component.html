@@ -1,0 +1,25 @@
+<form clrForm autocomplete="off" [formGroup]="form" novalidate>
+    <clr-range-container>
+        <label class="clr-sr-only" for="range">{{label}}</label>
+        <input type="range" id="range" name="range" clrRange formControlName="range" step="0.0001" min="10000"
+            max="1000000000" autocomplete="off" />
+        <clr-control-helper>{{'validation.hint.number'|translate}}</clr-control-helper>
+        <clr-control-error *ngIf="hasError(getFormCtrl('range'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('range'))">
+                {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMin(getFormCtrl('range'))">
+                {{'validation.messages.min'|translate:{ min: getMinNumber(getFormCtrl('range')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMax(getFormCtrl('range'))">
+                {{'validation.messages.max'|translate:{ max: getMaxNumber(getFormCtrl('range')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorDecimal(getFormCtrl('range'))">
+                {{'validation.messages.isDecimal'|translate}}
+            </ng-container>
+        </clr-control-error>
+    </clr-range-container>
+    <admin-button #$submit (click$)="onSubmit()" [disabled]="hasFormError"
+        [options]="{ icon: { shape: 'check', size: 16 }, type: 'button', clazz: 'btn btn-sm btn-icon' }">
+    </admin-button>
+</form>

@@ -1,0 +1,91 @@
+<admin-modal #$modal>
+    <ng-container role="modal-title">
+        <admin-icon [options]="{ size: 16, shape: 'error-standard', clazz: 'is-danger' }"></admin-icon>
+        {{'common.confirm'|translate}}
+    </ng-container>
+    <ng-container role="modal-body">
+        <p class="error active" [innerHTML]="error?.message|nl2br" *ngIf="error"></p>
+        <p class="p3">{{getPageText('content.2')}}</p>
+    </ng-container>
+    <ng-container role="modal-footer">
+        <admin-button (click$)="$modal?.close()" [options]="{ type: 'button', clazz: 'btn btn-outline' }">
+            {{'common.cancel'|translate}}
+        </admin-button>
+        <admin-button (click$)="onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-danger' }"
+            [disabled]="hasFormError">
+            {{'common.confirm'|translate}}
+        </admin-button>
+    </ng-container>
+</admin-modal>
+
+<ng-container>
+    <admin-card-layout>
+        <ng-container role="header">
+            <ng-container [ngTemplateOutlet]="$header"></ng-container>
+        </ng-container>
+        <ng-container role="description">
+            <ng-container [ngTemplateOutlet]="$description"></ng-container>
+        </ng-container>
+        <ng-container role="title">
+            <ng-container [ngTemplateOutlet]="$title"></ng-container>
+        </ng-container>
+        <ng-container role="text">
+            <ng-container [ngTemplateOutlet]="$text"></ng-container>
+        </ng-container>
+        <ng-container role="footer">
+            <ng-container [ngTemplateOutlet]="$footer"></ng-container>
+        </ng-container>
+    </admin-card-layout>
+</ng-container>
+
+<ng-template #$header>
+    {{getPageText('header')}}
+</ng-template>
+
+<ng-template #$description>
+    <p class="p8">{{getPageText('description')}}</p>
+</ng-template>
+
+<ng-template #$title>
+    <p class="p2">{{getPageText('title')}}</p>
+</ng-template>
+
+<ng-template #$text>
+    <clr-stack-view>
+        <clr-stack-header>
+            <p class="p8 mt-10 mb-10">{{getPageText('content.1')}}</p>
+        </clr-stack-header>
+        <clr-stack-block>
+            <clr-stack-label>{{'common.id'|translate}}</clr-stack-label>
+            <clr-stack-content>{{row?.id}}</clr-stack-content>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label>{{'common.name'|translate}}</clr-stack-label>
+            <clr-stack-content>{{row?.name}}</clr-stack-content>
+        </clr-stack-block>
+        <clr-stack-block>
+            <clr-stack-label>{{'common.status'|translate}}</clr-stack-label>
+            <clr-stack-content>
+                <span [class]="row?.status|status:'label'">
+                    <admin-icon [options]="{ size: 12, shape: row?.status|status:'icon' }"></admin-icon>
+                    {{row?.status|status:'translate'}}
+                </span>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-view>
+
+    <form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <admin-button (click$)="$modal?.open()"
+                    [options]="{ type: 'button', clazz: 'btn btn-danger btn-block' }" [disabled]="hasFormError">
+                    {{'common.delete'|translate}}
+                </admin-button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #$footer>
+    <admin-back-button></admin-back-button>
+</ng-template>

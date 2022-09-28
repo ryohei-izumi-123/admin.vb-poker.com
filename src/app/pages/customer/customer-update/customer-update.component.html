@@ -1,0 +1,286 @@
+<ng-container>
+  <admin-card-layout>
+    <ng-container role="header">
+      <ng-container [ngTemplateOutlet]="$header"></ng-container>
+    </ng-container>
+    <ng-container role="description">
+      <ng-container [ngTemplateOutlet]="$description"></ng-container>
+    </ng-container>
+    <ng-container role="title">
+      <ng-container [ngTemplateOutlet]="$title"></ng-container>
+    </ng-container>
+    <ng-container role="text">
+      <ng-container [ngTemplateOutlet]="$text"></ng-container>
+    </ng-container>
+    <ng-container role="footer">
+      <ng-container [ngTemplateOutlet]="$footer"></ng-container>
+    </ng-container>
+  </admin-card-layout>
+</ng-container>
+
+<ng-template #$header>
+  {{getPageText('header')}}
+</ng-template>
+
+<ng-template #$description>
+  <p class="p8">{{getPageText('description')}}</p>
+</ng-template>
+
+<ng-template #$title>
+  <p class="p2">{{getPageText('title')}}</p>
+</ng-template>
+
+<ng-template #$text>
+  <form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="clr-row">
+      <div class="clr-col-12" *ngIf="error">
+        <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+      </div>
+      <div class="clr-col-12">
+        <clr-select-container>
+          <label class="" for="role">{{'common.role'|translate}}</label>
+          <select clrSelect id="role" name="role" formControlName="role" [compareWith]="defaultCompareWith" required>
+            <option *ngIf="!hasRouteParamsId" [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let role of roles" [ngValue]="role">{{role|role:'translate'}}</option>
+          </select>
+          <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+          <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('role'))">
+              {{'validation.messages.required'|translate}}</ng-container>
+          </clr-control-error>
+        </clr-select-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="username">{{'common.username'|translate}}</label>
+          <input type="text" [clrFocusOnViewInit]="true" id="username" name="username"
+            [placeholder]="'placeholder.username'|translate" formControlName="username" autocomplete="off" minlength="4"
+            maxlength="16" clrInput required [readonly]="hasRouteParamsId" />
+          <clr-control-helper>{{'validation.hint.alphaNum'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('username'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('username'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('username'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('username')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('username'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('username')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('username'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12" [ngClass]="{ 'hidden': !hasRouteParamsId }">
+        <clr-toggle-container>
+          <label class="clr-sr-only" for="changePassword">{{'common.changePassword'|translate}}</label>
+          <clr-toggle-wrapper>
+            <input type="checkbox" id="changePassword" name="changePassword" formControlName="changePassword"
+              clrToggle />
+            <label>{{'common.changePassword'|translate}}</label>
+          </clr-toggle-wrapper>
+          <clr-control-helper>{{'validation.hint.none'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('changePassword'))"></clr-control-error>
+        </clr-toggle-container>
+      </div>
+
+      <div class="clr-col-12" [ngClass]="{ 'hidden': !showPasswordField }">
+        <clr-password-container>
+          <label class="" for="password">{{'common.password'|translate}}</label>
+          <input type="password" id="password" name="password" [placeholder]="'placeholder.password'|translate"
+            formControlName="password" autocomplete="off" minlength="6" maxlength="16" clrPassword required />
+          <clr-control-helper>{{'validation.hint.alphaNum'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('password'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('password'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('password'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('password')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('password'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('password')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('password'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-password-container>
+      </div>
+      <div class="clr-col-12" [ngClass]="{ 'hidden': !showPasswordField }">
+        <clr-password-container>
+          <label class="" for="confirmPassword">{{'common.confirmPassword'|translate}}</label>
+          <input type="password" id="confirmPassword" name="confirmPassword"
+            [placeholder]="'placeholder.confirmPassword'|translate" formControlName="confirmPassword" autocomplete="off"
+            minlength="6" maxlength="16" clrPassword required />
+          <clr-control-helper>{{'validation.hint.confirm'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('confirmPassword'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('confirmPassword'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('confirmPassword'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('confirmPassword'))
+              } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('confirmPassword'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('confirmPassword'))
+              } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('confirmPassword'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorSamePassword(getFormCtrl('confirmPassword'))">
+              {{'validation.messages.isSamePassword'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-password-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="firstName">{{'common.firstName'|translate}}</label>
+          <input type="text" id="firstName" name="firstName" [placeholder]="'placeholder.firstName'|translate"
+            formControlName="firstName" autocomplete="off" minlength="1" maxlength="16" clrInput required />
+          <clr-control-helper>{{'validation.hint.text'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('firstName'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('firstName'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('firstName'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('firstName')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('firstName'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('firstName')) } }}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="lastName">{{'common.lastName'|translate}}</label>
+          <input type="text" id="lastName" name="lastName" [placeholder]="'placeholder.lastName'|translate"
+            formControlName="lastName" autocomplete="off" minlength="1" maxlength="16" clrInput required />
+          <clr-control-helper>{{'validation.hint.text'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('lastName'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('lastName'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('lastName'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('lastName')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('lastName'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('lastName')) } }}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-select-container>
+          <label class="" for="countryId">{{'common.countryId'|translate}}</label>
+          <select clrSelect id="countryId" name="countryId" formControlName="countryId"
+            [compareWith]="defaultCompareWith" required>
+            <option *ngIf="!hasRouteParamsId" [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let item of countries" [ngValue]="item?.id">
+              {{item?.name}}
+              ({{item?.callPrefix}})
+            </option>
+          </select>
+          <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+          <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('countryId'))">
+              {{'validation.messages.required'|translate}}</ng-container>
+          </clr-control-error>
+        </clr-select-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="phone">{{'common.phone'|translate}}</label>
+          <input type="text" id="phone" name="phone" [placeholder]="'placeholder.phone'|translate"
+            formControlName="phone" autocomplete="off" minlength="8" maxlength="16" clrInput required />
+          <clr-control-helper>{{'validation.hint.number'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('phone'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('phone'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('phone'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('phone')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('phone'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('phone')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('phone'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorNumber(getFormCtrl('phone'))">
+              {{'validation.messages.isNumber'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="email">{{'common.email'|translate}}</label>
+          <input type="email" id="email" name="email" [placeholder]="'placeholder.email'|translate"
+            formControlName="email" autocomplete="off" minlength="4" maxlength="256" clrInput required />
+          <clr-control-helper>{{'validation.hint.email'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('email'))">
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('email'))">
+              {{'validation.messages.required'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorEmail(getFormCtrl('email'))">
+              {{'validation.messages.email'|translate}}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('email'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('email')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('email'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('email')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorAsync(getFormCtrl('email'))">
+              {{'validation.messages.async'|translate}}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-textarea-container>
+          <label class="" for="remarks">{{'common.remarks'|translate}}</label>
+          <textarea type="text" id="remarks" name="remarks" [placeholder]="'placeholder.remarks'|translate"
+            formControlName="remarks" autocomplete="off" rows="5" cols="50" clrTextarea></textarea>
+          <clr-control-helper>{{'validation.hint.textarea'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('remarks'))">
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('remarks'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('remarks')) } }}
+            </ng-container>
+          </clr-control-error>
+        </clr-textarea-container>
+      </div>
+      <div class="clr-col-12">
+        <clr-select-container>
+          <label class="" for="status">{{'common.status'|translate}}</label>
+          <select clrSelect id="status" name="status" formControlName="status" [compareWith]="defaultCompareWith"
+            required>
+            <option *ngIf="!hasRouteParamsId" [ngValue]="null">{{'common.pleaseSelect'|translate}}</option>
+            <option *ngFor="let status of statuses" [ngValue]="status">{{status|status:'translate'}}
+            </option>
+          </select>
+          <clr-control-helper>{{'validation.hint.select'|translate}}</clr-control-helper>
+          <clr-control-error>
+            <ng-container *ngIf="hasErrorRequired(getFormCtrl('status'))">
+              {{'validation.messages.required'|translate}}</ng-container>
+          </clr-control-error>
+        </clr-select-container>
+      </div>
+      <div class="clr-col-12">
+        <admin-button (click$)="onSubmit()" [options]="{ type: 'button', clazz: 'btn btn-primary' }"
+          [disabled]="hasFormError">
+          {{'common.submit'|translate}}
+        </admin-button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #$footer>
+  <admin-back-button></admin-back-button>
+</ng-template>

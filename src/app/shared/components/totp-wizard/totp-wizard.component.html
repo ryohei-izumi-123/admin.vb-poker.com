@@ -1,0 +1,104 @@
+<clr-wizard #$wizard [(clrWizardOpen)]="isOpen" [clrWizardDisableStepnav]="true" [clrWizardSize]="size"
+    (clrWizardOnCancel)="onCancel()" (clrWizardOnFinish)="onFinish()" (clrWizardOnReset)="onReset()">
+    <clr-wizard-header-action>
+        <admin-signpost-icon
+            [options]="{ clazz: 'card-description', position: 'bottom-left', icon: { shape: 'help', size: 16 } }">
+            <p class="p8">{{getPageText('description')}}</p>
+        </admin-signpost-icon>
+    </clr-wizard-header-action>
+    <clr-wizard-title>{{getPageText('header')}}</clr-wizard-title>
+    <clr-wizard-button [type]="'cancel'">{{'common.cancel'|translate}}</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">{{'common.previous'|translate}}</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">{{'common.next'|translate}}</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">{{'common.finish'|translate}}</clr-wizard-button>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>{{getPageText('title')}}</ng-template>
+        <ng-template clrPageNavTitle>{{getPageText('content.1')}}</ng-template>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <h4>{{getPageText('content.2')}}</h4>
+                <hr />
+            </div>
+            <div class="clr-col-12">
+                <ul class="list">
+                    <li>
+                        <admin-icon [options]="{ size: 16, shape: 'ios' }"></admin-icon>
+                        <mark>iPhone</mark>:
+                        <a href="https://apps.apple.com/jp/app/google-authenticator/id388497605" target="_blank">
+                            AppStore
+                        </a>
+                    </li>
+                    <li>
+                        <admin-icon [options]="{ size: 16, shape: 'android' }"></admin-icon>
+                        <mark>Android</mark>:
+                        <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=ja&gl=US"
+                            target="_blank">
+                            Google Play marketplace
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clr-col-12">
+                <img loading="lazy" class="ga" src="/assets/img/google-authenticator.png" />
+                <p class="p7">{{getPageText('content.3')}}</p>
+            </div>
+        </div>
+        <ng-template clrPageButtons>
+            <clr-wizard-button [type]="'next'">{{'common.next'|translate}}</clr-wizard-button>
+        </ng-template>
+    </clr-wizard-page>
+    <clr-wizard-page [clrWizardPagePreventDefault]="true" [clrWizardPreventDefaultNext]="true"
+        (clrWizardPageOnCommit)="onPageCommit()" (clrWizardPageOnCancel)="onPageCancel()"
+        (clrWizardPagePrevious)="prev()" #$mainPage>
+        <ng-template clrPageTitle>{{getPageText(enable ? 'content.4' : 'title')}}</ng-template>
+        <ng-template clrPageNavTitle>{{getPageText('content.5')}}</ng-template>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <h4>{{getPageText(enable ? 'content.6' : 'content.7')}}</h4>
+                <hr />
+            </div>
+            <div class="clr-col-12">
+                <p class="p3">{{getPageText(enable ? 'content.8' : 'content.9')}}</p>
+                <ng-container *ngIf="!enable">
+                    <clr-spinner *ngIf="isBusy; else $qr">{{'common.loading'|translate}}</clr-spinner>
+                    <ng-template #$qr>
+                        <div class="qr"><img loading="lazy" [attr.src]="qr" /></div>
+                    </ng-template>
+                </ng-container>
+            </div>
+            <div class="clr-col-12">
+                <admin-totp-form #$totpForm (onError$)="onTokenFailed($event)" (done$)="onTokenValidated($event)">
+                </admin-totp-form>
+            </div>
+        </div>
+        <ng-template clrPageButtons>
+            <clr-wizard-button [type]="'previous'">{{'common.previous'|translate}}</clr-wizard-button>
+            <clr-wizard-button [type]="'next'" [clrWizardButtonDisabled]="$totpForm?.hasFormError">
+                {{'common.next'|translate}}</clr-wizard-button>
+            <clr-wizard-button [type]="'custom-next'" (clrWizardButtonClicked)="onTokenValidated()"
+                [clrWizardButtonHidden]="true">
+                {{'common.next'|translate}}</clr-wizard-button>
+        </ng-template>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle>{{'common.complete'|translate}}</ng-template>
+        <ng-template clrPageNavTitle>{{'common.complete'|translate}}</ng-template>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <h4>{{getPageText('content.10')}}</h4>
+                <hr />
+            </div>
+            <div class="clr-col-12">
+                <p class="p7">
+                    <admin-icon [options]="{ size: 16, shape: 'check' }"></admin-icon>
+                    {{getPageText('content.11')}}
+                </p>
+            </div>
+        </div>
+        <ng-template clrPageButtons>
+            <clr-wizard-button [type]="'finish'">{{'common.finish'|translate}}</clr-wizard-button>
+        </ng-template>
+    </clr-wizard-page>
+</clr-wizard>

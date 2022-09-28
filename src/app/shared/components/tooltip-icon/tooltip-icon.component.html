@@ -1,0 +1,8 @@
+<ng-container>
+  <clr-tooltip>
+    <clr-icon clrTooltipTrigger [attr.shape]="options?.icon?.shape" [attr.class]="options?.clazz" [attr.size]="options?.icon?.size" (click)="onClick($event)"></clr-icon>
+    <clr-tooltip-content [clrPosition]="options?.position" [clrSize]="options?.size" *clrIfOpen>
+      <ng-content></ng-content>
+    </clr-tooltip-content>
+  </clr-tooltip>
+</ng-container>

@@ -1,0 +1,78 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+@include exportsAs("main") {
+  * {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+  }
+
+  * {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .fullscreen-overlay {
+    @include make-flex-fullscreen();
+  }
+
+  // hide google-recaptcha badge
+  .grecaptcha-badge,
+  .grecaptcha-logo {
+    visibility: hidden;
+  }
+
+  .card-description {
+    float: right;
+    .signpost-content-body {
+      p.p8 {
+        white-space: pre-wrap !important;
+      }
+    }
+  }
+
+  .img-wrapper {
+    width: 100%;
+    max-width: 40vw;
+    max-height: 10rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 1rem;
+    img {
+      max-height: 8rem;
+    }
+  }
+
+  .long-text-wrapper {
+    width: 100%;
+    max-width: 40vw;
+    max-height: 10rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
+  }
+
+  form {
+    select,
+    input[type="file"],
+    input[type="search"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"] {
+      min-width: 10rem;
+    }
+  }
+}

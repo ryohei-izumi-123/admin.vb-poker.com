@@ -1,0 +1,6 @@
+:host {
+  margin-right: 1rem;
+  ::ng-deep .nav-icon.dropdown-toggle {
+    padding: 0 !important;
+  }
+}

@@ -1,0 +1,127 @@
+<clr-accordion>
+  <clr-accordion-panel>
+    <clr-accordion-title>{{'common.criteria.title'|translate}}</clr-accordion-title>
+    <clr-accordion-content [(clrIfExpanded)]="isOpen">
+      <ng-container [ngTemplateOutlet]="$form"></ng-container>
+    </clr-accordion-content>
+  </clr-accordion-panel>
+</clr-accordion>
+
+<ng-template #$form>
+  <form clrForm autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="clr-row">
+      <div class="clr-col-12" *ngIf="error">
+        <div class="error active" [innerHTML]="error?.message|nl2br"></div>
+      </div>
+      <div class="clr-col-12">
+        <clr-input-container>
+          <label class="" for="query">
+            <admin-icon [options]="{ size: 16, shape: 'search' }"></admin-icon>
+          </label>
+          <input type="search" [clrFocusOnViewInit]="true" id="query" name="query"
+            [placeholder]="'placeholder.query'|translate" formControlName="query" autocomplete="off" minlength="4"
+            maxlength="16" clrInput />
+          <clr-control-helper>{{'validation.hint.query'|translate}}</clr-control-helper>
+          <clr-control-error *ngIf="hasError(getFormCtrl('query'))">
+            <ng-container *ngIf="hasErrorMinlength(getFormCtrl('query'))">
+              {{'validation.messages.minLength'|translate:{ length: getMinLength(getFormCtrl('query')) } }}
+            </ng-container>
+            <ng-container *ngIf="hasErrorMaxlength(getFormCtrl('query'))">
+              {{'validation.messages.maxLength'|translate:{ length: getMaxLength(getFormCtrl('query')) } }}
+            </ng-container>
+          </clr-control-error>
+        </clr-input-container>
+      </div>
+      <ng-container *ngIf="options?.createdAt">
+        <div class="clr-col-12">
+          <clr-toggle-container>
+            <label class="clr-sr-only" for="toggle">{{'common.toggle'|translate}}</label>
+            <clr-toggle-wrapper>
+              <input type="checkbox" id="toggle" name="toggle" formControlName="toggle" clrToggle />
+              <label>{{'common.criteria.createdAt'|translate}}</label>
+            </clr-toggle-wrapper>
+            <clr-control-helper>{{'validation.hint.none'|translate}}</clr-control-helper>
+            <clr-control-error *ngIf="hasError(getFormCtrl('toggle'))"></clr-control-error>
+          </clr-toggle-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="options?.createdAt" [formGroup]="getFormGroup('createdAt')">
+        <ng-container [formGroup]="getFormGroup('from', getFormGroup('createdAt'))">
+          <div class="clr-col-12 clr-col-md-3" [ngClass]="{ 'hidden': getFormCtrl('toggle')?.value !== true }">
+            <clr-date-container>
+              <label class="" for="from-date">{{'common.from'|translate}}</label>
+              <input type="date" id="from-date" name="date" [placeholder]="'placeholder.date'|translate"
+                formControlName="date" autocomplete="off" clrDate />
+              <clr-control-helper>{{'validation.hint.date'|translate}}</clr-control-helper>
+              <clr-control-error *ngIf="hasError(getFormCtrl('date', getFormGroup('from', getFormGroup('createdAt'))))">
+                <ng-container
+                  *ngIf="hasErrorDate(getFormCtrl('date', getFormGroup('from', getFormGroup('createdAt'))))">
+                  {{'validation.messages.isDate'|translate}}
+                </ng-container>
+              </clr-control-error>
+            </clr-date-container>
+          </div>
+          <div class="clr-col12 clr-col-md-2" [ngClass]="{ 'hidden': getFormCtrl('toggle')?.value !== true }">
+            <clr-input-container>
+              <label class="" for="from-time"></label>
+              <input type="time" id="from-time" name="time" [placeholder]="'placeholder.time'|translate"
+                formControlName="time" autocomplete="off" clrInput step="1" />
+              <clr-control-helper>{{'validation.hint.time'|translate}}</clr-control-helper>
+              <clr-control-error *ngIf="hasError(getFormCtrl('time', getFormGroup('from', getFormGroup('createdAt'))))">
+                <ng-container
+                  *ngIf="hasErrorTime(getFormCtrl('time', getFormGroup('from', getFormGroup('createdAt'))))">
+                  {{'validation.messages.isTime'|translate}}
+                </ng-container>
+              </clr-control-error>
+            </clr-input-container>
+          </div>
+          <div class="clr-col-12 clr-col-md-7"></div>
+        </ng-container>
+        <ng-container [formGroup]="getFormGroup('to', getFormGroup('createdAt'))">
+          <div class="clr-col-12 clr-col-md-3" [ngClass]="{ 'hidden': getFormCtrl('toggle')?.value !== true }">
+            <clr-date-container>
+              <label class="" for="to-date">{{'common.to'|translate}}</label>
+              <input type="date" id="to-date" name="date" [placeholder]="'placeholder.date'|translate"
+                formControlName="date" autocomplete="off" clrDate />
+              <clr-control-helper>{{'validation.hint.date'|translate}}</clr-control-helper>
+              <clr-control-error *ngIf="hasError(getFormCtrl('date', getFormGroup('to', getFormGroup('createdAt'))))">
+                <ng-container *ngIf="hasErrorDate(getFormCtrl('date', getFormGroup('to', getFormGroup('createdAt'))))">
+                  {{'validation.messages.isDate'|translate}}
+                </ng-container>
+              </clr-control-error>
+              <clr-control-error *ngIf="hasError(getFormGroup('to', getFormGroup('createdAt')))">
+                <ng-container *ngIf="hasErrorDateRange(getFormGroup('to', getFormGroup('createdAt')))">
+                  {{'validation.messages.isDateRange'|translate}}
+                </ng-container>
+              </clr-control-error>
+            </clr-date-container>
+          </div>
+          <div class="clr-col-12 clr-col-md-2" [ngClass]="{ 'hidden': getFormCtrl('toggle')?.value !== true }">
+            <clr-input-container>
+              <label class="" for="to-time"></label>
+              <input type="time" id="to-time" name="time" [placeholder]="'placeholder.time'|translate"
+                formControlName="time" autocomplete="off" clrInput />
+              <clr-control-helper>{{'validation.hint.time'|translate}}</clr-control-helper>
+              <clr-control-error *ngIf="hasError(getFormCtrl('time', getFormGroup('to', getFormGroup('createdAt'))))">
+                <ng-container *ngIf="hasErrorTime(getFormCtrl('time', getFormGroup('to', getFormGroup('createdAt'))))">
+                  {{'validation.messages.isTime'|translate}}
+                </ng-container>
+              </clr-control-error>
+            </clr-input-container>
+          </div>
+          <div class="clr-col-12 clr-col-md-7"></div>
+        </ng-container>
+      </ng-container>
+      <div class="clr-col-12 mt-20">
+        <clr-button-group class="btn-sm" [clrMenuPosition]="'bottom-right'">
+          <clr-button class="" type="button" (click)="onSubmit()" [disabled]="hasFormError">
+            {{'common.search'|translate}}
+          </clr-button>
+          <clr-button class="" type="button" (click)="reset()">
+            {{'common.clear'|translate}}
+          </clr-button>
+        </clr-button-group>
+      </div>
+    </div>
+  </form>
+</ng-template>

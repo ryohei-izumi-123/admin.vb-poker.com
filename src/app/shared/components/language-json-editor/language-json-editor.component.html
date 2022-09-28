@@ -1,0 +1,17 @@
+<form clrForm autocomplete="off" novalidate>
+    <input type="hidden" name="json" [(ngModel)]="json" />
+    <clr-tree>
+        <clr-tree-node *clrRecursiveFor="let node of nodes;getChildren: getChildren" [clrExpanded]="true">
+            <span class="clr-col-2">{{node?.key}}</span>
+            <ng-container *ngIf="!hasChildren(node)">
+                <clr-input-container [clrInline]="true" class="clr-col-10">
+                    <label>:</label>
+                    <input type="text" [name]="node?.path" (change)="onValueChange($event, node)" [value]="node?.value"
+                        autocomplete="off" clrInput />
+                    <clr-control-helper></clr-control-helper>
+                    <clr-control-error></clr-control-error>
+                </clr-input-container>
+            </ng-container>
+        </clr-tree-node>
+    </clr-tree>
+</form>

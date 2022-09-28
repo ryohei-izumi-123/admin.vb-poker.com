@@ -1,0 +1,5 @@
+@import "utils/mixins";
+
+:host {
+  @include make-flex-fullscreen();
+}

@@ -1,0 +1,65 @@
+/* stylelint-disable */
+@charset 'UTF-8';
+
+@include exportsAs("sentry") {
+  .sentry-error-embed-wrapper {
+    // sentryのエラーレポーターは他のコンポーネントよりも上層レイヤーに配置
+    z-index: calc(99999 + 1) !important;
+
+    .sentry-error-embed {
+      padding-bottom: 24px !important;
+
+      header {
+        display: block !important;
+        color: #fafafa !important;
+        background-color: #fff !important;
+        height: auto !important;
+
+        h2 {
+          font-size: 28px;
+          font-weight: 500 !important;
+          margin: 0 0 5px !important;
+          color: #394359 !important;
+          margin-bottom: 0 !important;
+          margin-top: 0 !important;
+          letter-spacing: normal !important;
+          line-height: 42px !important;
+        }
+        p {
+          color: #94a0b3 !important;
+          display: block !important;
+          font-weight: 400 !important;
+          font-size: 16px !important;
+          letter-spacing: normal !important;
+          line-height: 1.2rem !important;
+          margin: 0 0 20px !important;
+        }
+      }
+
+      .form-submit {
+        .btn {
+          border: none !important;
+          color: #fff !important;
+          background: #25a6f7 !important;
+          padding: 10px 15px !important;
+          margin-right: 15px !important;
+          font-size: 16px !important;
+          font-weight: 500 !important;
+          cursor: pointer !important;
+          float: left !important;
+          border: 1px solid #1d87ce !important;
+          box-shadow: 0 1px 1px rgb(0 0 0 / 12%) !important;
+          height: auto !important;
+        }
+
+        .close {
+          margin-top: 8px !important;
+        }
+
+        .powered-by {
+          margin-top: 6px !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<clr-button-group [ngClass]="options?.clazz" [clrMenuPosition]="options?.position">
+    <ng-container *ngFor="let button of options?.buttons">
+        <clr-button [ngClass]="button?.clazz" [type]="button?.type" (click)="button?.click()"
+            [disabled]="button?.disabled" [clrInMenu]="button?.inMenu">
+            <clr-icon *ngIf="button?.icon?.shape" [attr.shape]="button?.icon?.shape"></clr-icon>
+            <ng-container *ngIf="button?.text">{{button?.text}}</ng-container>
+        </clr-button>
+    </ng-container>
+</clr-button-group>

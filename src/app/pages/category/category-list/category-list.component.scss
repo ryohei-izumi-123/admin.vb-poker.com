@@ -1,0 +1,13 @@
+:host {
+  ::ng-deep {
+    .dg-column-name,
+    .dg-column-img {
+      min-width: 6rem;
+    }
+    .dg-cell-img {
+      img {
+        height: 1rem !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<clr-signpost [attr.class]="options?.clazz">
+  <clr-icon [attr.shape]="options?.icon?.shape" [attr.size]="options?.icon?.size" clrSignpostTrigger
+    (click)="onClick($event)"></clr-icon>
+  <clr-signpost-content [clrPosition]="options?.position" *clrIfOpen>
+    <ng-content></ng-content>
+  </clr-signpost-content>
+</clr-signpost>

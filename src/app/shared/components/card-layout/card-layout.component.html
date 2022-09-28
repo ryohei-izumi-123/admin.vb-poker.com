@@ -1,0 +1,36 @@
+<ng-container *ngIf="options?.useGrid; else $card">
+    <ng-container [ngTemplateOutlet]="$grid"></ng-container>
+</ng-container>
+
+<ng-template #$grid>
+    <div class="clr-row">
+        <div class="clr-col">
+            <ng-container [ngTemplateOutlet]="$card"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #$card>
+    <div class="card">
+        <div class="card-header">
+            <ng-container *ngIf="options?.hasHeader">
+                <ng-content select="[role=header]"></ng-content>
+            </ng-container>
+            <admin-signpost-icon *ngIf="options?.hasSignpost"
+                [options]="{ clazz: 'card-description', position: 'bottom-left', icon: { shape: 'help', size: 16 } }">
+                <ng-content select="[role=description]"></ng-content>
+            </admin-signpost-icon>
+        </div>
+        <div class="card-block">
+            <div class="card-title" *ngIf="options?.hasTitle">
+                <ng-content select="[role=title]"></ng-content>
+            </div>
+            <div class="card-text" *ngIf="options?.hasText">
+                <ng-content select="[role=text]"></ng-content>
+            </div>
+        </div>
+        <div class="card-footer" *ngIf="options?.hasFooter">
+            <ng-content select="[role=footer]"></ng-content>
+        </div>
+    </div>
+</ng-template>
